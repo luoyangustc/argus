@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -ex
+cp -r $QBOXROOT/src/qiniu.com/argus/AIProjects/tianyan/onvif_porting .

@@ -1,0 +1,48 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""ai-sdk.
+
+Usage:
+  ai-sdk (test|run|build) pulp [-f flavor]
+  ai-sdk (test|run|build) pulp_filter [-f flavor]
+  ai-sdk (test|run|build) terror_detect [-f flavor]
+  ai-sdk (test|run|build) terror_mixup [-f flavor]
+  ai-sdk (test|run|build) terror_detect_complex [-f flavor]
+  ai-sdk (test|run|build) terror_mixup_complex [-f flavor]
+  ai-sdk (test|run|build) terror_wangan_mixup [-f flavor]
+  ai-sdk test common
+  ai-sdk lint
+  ai-sdk build core
+  ai-sdk (-h | --help)
+  ai-sdk --version
+
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+  -f, --flavor flavor AISDK_FLAVOR 环境变量值，默认 DEV
+
+"""
+from docopt import docopt
+import os
+import os.path
+import sys
+sys.path.append(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), 'python'))
+
+import aisdk.common.ai_sdk as ai_sdk  # pylint: disable=import-error
+
+if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    arg = docopt(__doc__, version='0.1')
+    if arg['build'] and arg['core']:
+        ai_sdk.build_core()
+    elif arg['test']:
+        ai_sdk.test_app(sys.argv[2])
+    elif arg['run']:
+        ai_sdk.run_app(sys.argv[2], not_run_app=False, flavor=arg['--flavor'])
+    elif arg['build']:
+        ai_sdk.run_app(sys.argv[2], not_run_app=True)
+    elif arg['lint']:
+        ai_sdk.lint()
+    else:
+        raise Exception("bad arg {}".format(arg))

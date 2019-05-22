@@ -1,0 +1,236 @@
+[
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        440, 
+                        228
+                    ], 
+                    [
+                        1084, 
+                        228
+                    ], 
+                    [
+                        1084, 
+                        1149
+                    ], 
+                    [
+                        440, 
+                        1149
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_1.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        565, 
+                        323
+                    ], 
+                    [
+                        1160, 
+                        323
+                    ], 
+                    [
+                        1160, 
+                        1121
+                    ], 
+                    [
+                        565, 
+                        1121
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_2.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        291, 
+                        177
+                    ], 
+                    [
+                        619, 
+                        177
+                    ], 
+                    [
+                        619, 
+                        650
+                    ], 
+                    [
+                        291, 
+                        650
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_3.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        332, 
+                        100
+                    ], 
+                    [
+                        573, 
+                        100
+                    ], 
+                    [
+                        573, 
+                        404
+                    ], 
+                    [
+                        332, 
+                        404
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_1.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        253, 
+                        57
+                    ], 
+                    [
+                        510, 
+                        57
+                    ], 
+                    [
+                        510, 
+                        389
+                    ], 
+                    [
+                        253, 
+                        389
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_4.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        275, 
+                        45
+                    ], 
+                    [
+                        480, 
+                        45
+                    ], 
+                    [
+                        480, 
+                        317
+                    ], 
+                    [
+                        275, 
+                        317
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_6.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        327, 
+                        390
+                    ], 
+                    [
+                        591, 
+                        390
+                    ], 
+                    [
+                        591, 
+                        722
+                    ], 
+                    [
+                        327, 
+                        722
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_1.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        349, 
+                        162
+                    ], 
+                    [
+                        579, 
+                        162
+                    ], 
+                    [
+                        579, 
+                        439
+                    ], 
+                    [
+                        349, 
+                        439
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_2.jpg"
+        }
+    }, 
+    {
+        "data": {
+            "body": "", 
+            "attribute": {
+                "pts": [
+                    [
+                        467, 
+                        357
+                    ], 
+                    [
+                        756, 
+                        357
+                    ], 
+                    [
+                        756, 
+                        769
+                    ], 
+                    [
+                        467, 
+                        769
+                    ]
+                ]
+            }, 
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_3.jpg"
+        }
+    }
+]

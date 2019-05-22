@@ -1,0 +1,76 @@
+{
+    "router": {
+        "port": "6789"
+    },
+    "version": "v1",
+    "workspace": "/tmp/eval/",
+    "services": {
+        "qiniu.com/argus/service/service/video/vod/video": {
+            "service": {
+                "default_vframe": {
+                    "mode": 0,
+                    "interval": 5
+                }
+            },
+            "ops": {
+                "qiniu.com/argus/service/service/video/vod/pulp/video": {
+                    "evals": {
+                        "evalPulp": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/pulp.evalPulp"
+                        },
+                        "evalPulpFilter": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/pulp.evalPulpFilter"
+                        }
+                    }
+                },
+                "qiniu.com/argus/service/service/video/vod/terror/video": {
+                    "evals": {
+                        "evalTerrorMixup": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/terror.evalTerrorMixup"
+                        },
+                        "evalTerrorDetect": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/terror.evalTerrorDetect"
+                        }
+                    }
+                },
+                "qiniu.com/argus/service/service/video/vod/politician/video": {
+                    "evals": {
+                        "evalFacexDetect": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/politician.evalFacexDetect"
+                        },
+                        "evalFacexFeatureV4": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/politician.evalFacexFeatureV4"
+                        },
+                        "evalPolitician": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/politician.evalPolitician"
+                        }
+                    }
+                },
+                "qiniu.com/argus/service/service/video/vod/terror_complex/video": {
+                    "evals": {
+                        "evalTerrorMixup": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/terror_complex.evalTerrorMixup"
+                        },
+                        "evalTerrorDetect": {
+                            "host": "http://localhost:9000",
+                            "redirect": "/v1/eval/terror_complex.evalTerrorDetect"
+                        }
+                    }
+                },
+                "qiniu.com/argus/service/service/video/vod/face_search/video": {
+                    "service": {
+                        "image_host": "http://localhost:6125"
+                    }
+                }
+            }
+        }
+    }
+}

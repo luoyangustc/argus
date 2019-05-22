@@ -1,0 +1,19 @@
+{
+    "app": "face_feature",
+    "workspace": "./",
+    "use_device": "GPU",
+    "batch_size": 2,
+
+    "model_files": {
+        "mtcnn-caffe-model/det1.caffemodel": "./mtcnn-caffe-model/det1.caffemodel",
+        "mtcnn-caffe-model/det2.caffemodel": "./mtcnn-caffe-model/det2.caffemodel",
+        "mtcnn-caffe-model/det3.caffemodel": "./mtcnn-caffe-model/det3.caffemodel",
+        "mtcnn-caffe-model/det4.caffemodel": "./mtcnn-caffe-model/det4.caffemodel",
+        "feature-model/model-symbol.json": "./feature-model/model-symbol.json",
+        "feature-model/model-0000.params": "./feature-model/model-0000.params"
+    },
+    "model_params": {
+        "gpu_id": 0,
+        "roi_scale": 1.0
+    }
+}

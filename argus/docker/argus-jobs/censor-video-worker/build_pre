@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/argus-jobs/censor-video-worker
+cp $QBOXROOT/bin/censor-video-worker .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/argus-jobs/censor-video-worker/censor-video-worker.conf .

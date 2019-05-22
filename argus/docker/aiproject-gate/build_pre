@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/aiproject-gate
+cp $QBOXROOT/bin/aiproject-gate .
+
+echo -e ${AIPROJECT_CA_PEM} > ca.pem
+echo -e ${AIPROJECT_CA_KEY} > ca.key
+sed -i 's/"user_name":.*$/"user_name":"'${AIPROJECT_KUB_NAME}'",/g' ./aiproject.conf
+sed -i 's/"password":.*$/"password":"'${AIPROJECT_KUB_PASSWORD}'",/g' ./aiproject.conf

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/censor_private
+cp $QBOXROOT/bin/censor_private .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/censor_private/censor_private.conf .

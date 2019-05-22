@@ -1,0 +1,29 @@
+
+syntax = "proto3";
+
+package inference.foo;
+
+message ForwardRequest {
+  message ForwardData {
+    bytes body = 3;
+  }
+
+  ForwardData data = 1;
+}
+
+message ForwardRequests {
+  repeated ForwardRequest requests = 1;
+}
+
+message ForwardResponse {
+  int32 code = 1;
+  string message = 2;
+
+  int32 w = 5;
+  int32 h = 6;
+  float sum = 7;
+}
+
+message ForwardResponses {
+  repeated ForwardResponse responses = 1;
+}

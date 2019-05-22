@@ -1,0 +1,42 @@
+dist: trusty
+sudo: required
+
+
+matrix:
+  include:
+    - os: linux
+      language: cpp
+      compiler: gcc
+      before_install:
+        - echo $TRAVIS_BUILD_DIR
+      install:
+        - ./common/tron/scripts/travis/install.sh
+      script:
+        - ./common/tron/scripts/build_shell.sh
+    - os: linux
+      language: cpp
+      compiler: gcc
+      env:
+        - BUILD=linux-cuda-cudnn
+      before_install:
+        - source inference/face/face-det/tron/scripts/travis/setup.sh
+      install:
+        - ./inference/face/face-det/tron/scripts/travis/install.sh
+        - ./inference/face/face-det/tron/scripts/travis/build.sh
+      script:
+        - echo $TRAVIS_BUILD_DIR
+    - os: linux
+      language: cpp
+      compiler: gcc
+      env:
+        - BUILD=linux-cuda-cudnn
+      before_install:
+        - source inference/retrieval/image_retrieval/tron/scripts/travis/setup.sh
+      install:
+        - ./inference/retrieval/image_retrieval/tron/scripts/travis/install.sh
+        - ./inference/retrieval/image_retrieval/tron/scripts/travis/build.sh
+      script:
+        - echo $TRAVIS_BUILD_DIR
+
+cache:
+  apt: true

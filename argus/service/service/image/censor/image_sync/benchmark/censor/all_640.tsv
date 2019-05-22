@@ -1,0 +1,120 @@
+#FacexDetect 检测四个人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-four_face/640X480/four_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-four_face/640X480/four_face_2.jpg
+#FacexDetect 未检测到人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_2.jpg
+#FacexDetect 未检测到人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_2.jpg
+#FacexDetect 未检测到人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_2.jpg
+#FacexDetect 未检测到人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_2.jpg
+#FacexDetect 未检测到人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-no_face/640X480/no_face_2.jpg
+#FacexDetect 检测一个人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_2.jpg
+#FacexDetect 检测一个人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_2.jpg
+#FacexDetect 检测一个人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_2.jpg
+#FacexDetect 检测一个人脸框 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/politician-one_face/640X480/one_face_2.jpg
+# pulp filter 输出ava-pulp 经过两个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-ava-pulp/640X480/pulp-1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-ava-pulp/640X480/pulp-2.jpg
+# pulp filter 输出ava-pulp 经过两个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-ava-pulp/640X480/pulp-1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-ava-pulp/640X480/pulp-2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+# pulp filter 输出endpoint  经过一个模型 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/pulp-endpoint/640X480/pulp_normal_2.jpg
+#terror-mixup 返回 terror-detect,经过两个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-det/640X480/terror_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-det/640X480/terror_2.jpg
+#terror-mixup 返回 terror-detect,经过两个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-det/640X480/terror_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-det/640X480/terror_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+#terror-mixup 返回 endpoint,经过一个模型,图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/terror-endpoint/640X480/terror_endpoint_2.jpg
+# ads-qrcode 返回有结果, 经过一个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-qrcode/640X480/qrcode1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-qrcode/640X480/qrcode2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/640X480/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为640*480
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/640X480/with_text_2.jpg

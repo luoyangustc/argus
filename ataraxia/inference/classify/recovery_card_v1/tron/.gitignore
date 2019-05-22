@@ -1,0 +1,56 @@
+### Example user template
+build
+data
+models
+third_party
+converter/model_caffe
+converter/model_mxnet
+converter/model_tron
+*.py[cod]
+*_pb2.py
+*.pb.cc
+*.pb.h
+.DS_Store
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Visual Studio files
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.pdb
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app

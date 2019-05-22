@@ -1,0 +1,41 @@
+FROM golang:1.10.3 as builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends python-dev
+# ENV GOLANG_VERSION 1.10.3
+# RUN wget -O go.tgz --no-check-certificate "http://p7b5ku1yx.bkt.clouddn.com/go$GOLANG_VERSION.linux-amd64.tar.gz"; \
+# 	tar -C /usr/local -xzf go.tgz; \
+# 	rm -rf go.tgz; \
+# 	\
+# 	export PATH=$PATH:/usr/local/go/bin; \
+# 	go version
+
+WORKDIR /go/src
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+ADD argus /go/src/qiniu.com/argus
+
+RUN go install qiniu.com/argus/AIProjects/mix/cmd/mix
+RUN go install qiniu.com/argus/cmd/serving-eval
+
+
+FROM BASEIMAGE
+
+RUN apt-get update -y \
+    && apt-get -y install python-setuptools python-pip libpython2.7-dev
+
+RUN python -m pip install -i https://mirrors.aliyun.com/pypi/simple --upgrade pip
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com prometheus_client 
+
+RUN mkdir -p /workspace/serving/run/auditlog && \
+    mkdir -p /tmp/eval
+
+COPY --from=builder /go/bin/mix /workspace/serving/mix
+COPY --from=builder /go/bin/serving-eval /workspace/serving/serving-eval
+
+ENV GODEBUG cgocheck=0
+ENV PATH=$PATH:/workspace/serving
+ENV INTEGRATE=lib
+
+WORKDIR /workspace/serving
+
+# CMD ["mix","-f","mix.conf"]

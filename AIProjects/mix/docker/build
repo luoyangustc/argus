@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -ex
+
+pwd=`pwd`
+rm -rf ../../../../build && mkdir ../../../../build && cd ../../../../build
+cp -Rf ../argus .
+
+echo "dockerfile ..."
+sed 's/BASEIMAGE/'$BASE_IMAGE'/g' ${pwd}'/Dockerfile' > Dockerfile
+docker build . -t $1
+cd ${pwd}

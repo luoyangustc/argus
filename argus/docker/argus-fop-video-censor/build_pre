@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/argus-fop/video-censor
+cp $QBOXROOT/bin/video-censor argus-fop

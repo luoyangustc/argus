@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -ex
+
+cur_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+generate_script="${cur_dir}/scripts/generate_app_test.py"
+generate_conf_script="${cur_dir}/scripts/generate_test_conf.py"
+tpl_basedir="${cur_dir}/templates/app"
+package_name="qiniu.com/argus/test/scene/"
+out_basedir="${GOPATH}/src/${package_name}"
+
+if [ -z "${APP_BUILD_CONF}" ]; then
+    APP_BUILD_CONF="${GOPATH}/src/qiniu.com/argus/docker/argus-service/scripts/app.build.example.json"
+fi
+
+echo "generating test suite"
+python ${generate_script} --app_build_conf_file="${APP_BUILD_CONF}" --app_tpl_dir="${tpl_basedir}" --app_out_dir="${out_basedir}"
+
+echo "generating test conf"
+python ${generate_conf_script} --app_build_conf_file="${APP_BUILD_CONF}" --app_tpl_dir="${tpl_basedir}" --app_out_dir="${out_basedir}"
+
+if [ -z "${APP_PACK_CASE}" ]; then
+    cd ../../test/script
+    TEST_NAME=$TEST_NAME ./pack.sh
+fi
+
+
+# TODO
+# ./argus-service -f ./argus-service.conf -mock
+# generate integration.default data
+# upload onto bucket

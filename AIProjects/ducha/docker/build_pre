@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf src
+mkdir -p src/qiniu.com/
+git clone $QBOXROOT/src/qiniu.com/argus src/qiniu.com/argus
+mkdir -p src/qiniu.com/argus/AIProjects
+git clone $QBOXROOT/src/qiniu.com/argus/AIProjects src/qiniu.com/argus/AIProjects

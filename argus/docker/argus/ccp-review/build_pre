@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/ccp-review
+
+cp $QBOXROOT/bin/ccp-review .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/ccp-review/review.conf .

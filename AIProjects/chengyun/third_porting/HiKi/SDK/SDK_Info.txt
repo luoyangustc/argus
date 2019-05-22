@@ -1,0 +1,3 @@
+HIKI SDK URL:
+http://oq2qpeuia.bkt.clouddn.com/Hiki/CH_HCNetSDK_V5.2.7.4_build20170606_Linux64.zip
+http://oq2qpeuia.bkt.clouddn.com/Hiki/PlayCtrl_Linux64_V7.3.3.30_Build20171214.zip

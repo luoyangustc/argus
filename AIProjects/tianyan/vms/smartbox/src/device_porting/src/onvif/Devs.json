@@ -1,0 +1,27 @@
+{
+	"count":	1,
+	"Devs":	[{
+			"index":	0,
+			"Manufacturer":	"Dahua",
+			"Model":	"IPC-HFW1225M-I1",
+			"FirmwareVersion":	"2.420.0000.27.R, Build Date 2017-08-03",
+			"SerialNumber":	"3L068F3PAG04171",
+			"HardwareId":	"1.00",
+			"MediaProfile Count":	2,
+			"Media Profiles":	[{
+					"index":	0,
+					"Width":	1280,
+					"Height":	720,
+					"Bitrate(kb)":	2048,
+					"Video Codec:":	"H264",
+					"rtsp url:":	"rtsp://admin:AAAaaa111@100.100.58.243:554/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif"
+				}, {
+					"index":	1,
+					"Width":	704,
+					"Height":	576,
+					"Bitrate(kb)":	512,
+					"Video Codec:":	"H264",
+					"rtsp url:":	"rtsp://admin:AAAaaa111@100.100.58.243:554/cam/realmonitor?channel=1&subtype=1&unicast=true&proto=Onvif"
+				}]
+		}]
+}

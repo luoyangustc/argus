@@ -1,0 +1,75 @@
+###########  MakeFile.env  ##########
+# Top level pattern, include by Makefile of child directory
+# in which variable like TOPDIR, TARGET or LIB may be needed
+
+ROOT_PATH=../../
+
+SRC_PATH=../src/
+INC_PATH=../inc/
+
+LIBSPATH=../libs/
+OBJSPATH=./objs/
+
+CC = gcc
+MAKE = make
+AR = ar
+RM = rm -rf
+STATIC=1
+
+ifeq ($(STATIC),1)
+LIB_TARGET=${LIBSPATH}libc5_dev_net.a
+else
+LIB_TARGET=${LIBSPATH}libc5_dev_net.so
+endif
+
+PROTOCOL_PATH=../protocol/
+BASE_PATH=${ROOT_PATH}base_lib/
+HTTP_PATH=${ROOT_PATH}third_party/http/
+JSON_PATH=${ROOT_PATH}third_party/json/
+
+CFILES_HTTP = $(wildcard $(HTTP_PATH)*.c)
+CFILES_JSON = $(wildcard $(JSON_PATH)*.c)
+CFILES_PROTOCOL = $(wildcard $(PROTOCOL_PATH)*.c)
+CFILES_DNL = $(wildcard $(SRC_PATH)*.c)
+
+OBJS_HTTP := $(patsubst %c, %o, $(CFILES_HTTP))
+OBJS_JSON := $(patsubst %c, %o, $(CFILES_JSON))
+OBJS_PROTOCOL := $(patsubst %c, %o, $(CFILES_PROTOCOL))
+OBJS_SRC := $(patsubst %c, %o, $(CFILES_DNL))
+
+INCLUDES += -I$(BASE_PATH)inc/ -I$(HTTP_PATH) -I$(JSON_PATH) -I$(INC_PATH) -I$(PROTOCOL_PATH)
+
+ifeq ($(STATIC),1)
+CFLAGS += -Wall -static -O2 -Os  -g -DDNL_SDK_UNIX -DOS_LINUX
+else
+CFLAGS += -Wall -static -O2 -Os  -fpic  -DDNL_SDK_UNIX -DOS_LINUX
+endif
+
+LD_INC =
+LD_LIB =
+LDFLAGS = -l ${BASE_PATH}libs/libc5_base.a
+
+all:$(LIB_TARGET)
+
+$(LIB_TARGET):$(OBJS_HTTP) $(OBJS_JSON) $(OBJS_PROTOCOL) $(OBJS_SRC)
+ifeq ($(STATIC),1)
+	$(AR) -rc $@ $^
+else
+	$(CC) $(LD_INC) $(LD_LIB) -shared -o $@ $^
+endif
+
+$(OBJS_HTTP):%.o:%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o  $@
+
+$(OBJS_JSON):%.o:%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o  $@
+
+$(OBJS_PROTOCOL):%.o:%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o  $@
+
+$(OBJS_SRC):%o:%c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o  $@
+
+clean:
+	rm -rf $(LIB_TARGET)
+	rm -rf $(OBJS_HTTP) $(OBJS_JSON) ${OBJS_PROTOCOL} $(OBJS_SRC)

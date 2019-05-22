@@ -1,0 +1,6 @@
+#!/bin/bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/wangan/yuqing/app/yuqing_parser
+cp $GOPATH/bin/linux_amd64/yuqing_parser .
+cp $GOPATH/src/qiniu.com/argus/AIProjects/wangan/yuqing/app/yuqing_parser/result.html .
+cp $GOPATH/src/qiniu.com/argus/AIProjects/wangan/yuqing/app/yuqing_parser/yuqing_parser.conf .

@@ -1,0 +1,99 @@
+modelRoot: "/workspace/serving/models"
+model: {
+  name: "mix"
+  version: 0
+  platform: "tensorrt"
+  file: {
+    name: "net.bin"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 224
+    shape: 224
+  }
+  output: {
+    name: "loc"
+    shape: 1
+    shape: 7
+    shape: 400
+  }
+  output: {
+    name: "prob_bk"
+    shape: 48
+  }
+  output: {
+    name: "prob_pulp"
+    shape: 3
+  }
+}
+model: {
+  name: "fo"
+  version: 0
+  platform: "tensorrt"
+  file: {
+    name: "net.bin"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 48
+    shape: 48
+  }
+  output: {
+    name: "conv"
+    shape: 10
+  }
+  output: {
+    name: "prob"
+    shape: 2
+  }
+}
+model: {
+  name: "ff"
+  version: 0
+  platform: "tensorrt"
+  file: {
+    name: "net.bin"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 112
+    shape: 112
+  }
+  output: {
+    name: "fc"
+    shape: 128
+  }
+}
+instance: {
+  model: "mix"
+  version: 0
+  batchSize: 8
+  count: {
+    count: 2
+    kind: GPU
+    gpu: 0
+  }
+}
+instance: {
+  model: "fo"
+  version: 0
+  batchSize: 8
+  count: {
+    count: 1
+    kind: GPU
+    gpu: 0
+  }
+}
+instance: {
+  model: "ff"
+  version: 0
+  batchSize: 8
+  count: {
+    count: 1
+    kind: GPU
+    gpu: 0
+  }
+}

@@ -1,0 +1,13 @@
+product_name: wangan-mix
+benchmarks:
+  - name: wangan-mix
+    tsv:
+      - all.tsv
+    js: k6.js
+    env:
+      SCENES: wangan-mix
+    vus:
+      - 1
+      - 5
+      - 10
+  

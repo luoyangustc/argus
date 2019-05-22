@@ -1,0 +1,5 @@
+device_ip:15.18.195.254
+channel_index:1
+user_id:admin
+user_pwd:12345
+port:8000

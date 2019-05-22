@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+rm -rf argus
+git clone $QBOXROOT/src/qiniu.com/argus argus

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/argus-fop/image-censor
+cp $QBOXROOT/bin/image-censor argus-fop

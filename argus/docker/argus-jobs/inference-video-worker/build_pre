@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/argus-jobs/inference-video-worker
+cp $QBOXROOT/bin/inference-video-worker .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/argus-jobs/inference-video-worker/inference-video-worker.conf .

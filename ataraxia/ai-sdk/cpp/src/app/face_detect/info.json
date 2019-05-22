@@ -1,0 +1,29 @@
+{
+    "info_type": "tensord",
+    "name": "fd",
+    "version": "0.2.0",
+    "model": {
+        "prototxt": "models.prototxt",
+        "tar_file": "ava-facex-detect/tron-refinenet-mtcnn/20180824-private.tar",
+        "alias": {
+            "fd/0/net.tronmodel": "refinedet_v0.0.2.tronmodel",
+            "qa/0/net.tronmodel": "quality_v0.0.2.tronmodel"
+        }
+    },
+    "run": {
+        "image": "fd",
+        "batch_size": 4
+    },
+    "test": {
+        "tsv": "serving/facex-detect/20180905/set20180905/0905_quality_orit.2.tsv",
+        "set": "serving/facex-detect/set20180905/"
+    },
+    "custom_files": {},
+    "custom_values": {
+        "gpu_id": 0,
+        "const_use_quality": true,
+        "blur_threshold": 0.98,
+        "output_quality_score": true,
+        "min_face": 50
+    }
+}

@@ -1,0 +1,30 @@
+# ads-qrcode 返回有结果, 经过一个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-qrcode/1280X960/qrcode1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-qrcode/1280X960/qrcode2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回无结果, 经过两个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-no_text/1280X960/no_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_2.jpg
+# ads-qrcode 返回无结果, detection返回有结果, 再经过recognition和classifier, 经过四个模型, 图片大小为1280*960
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_1.jpg
+http://pj5mpx90q.bkt.clouddn.com/ads-with_text/1280X960/with_text_2.jpg

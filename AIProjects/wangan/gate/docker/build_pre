@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/wangan/gate/wangan-gate
+cp $QBOXROOT/bin/wangan-gate .
+cp $QBOXROOT/src/qiniu.com/argus/AIProjects/wangan/gate/wangan-gate/wangan-gate.conf .

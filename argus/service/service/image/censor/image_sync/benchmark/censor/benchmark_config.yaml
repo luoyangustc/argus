@@ -1,0 +1,143 @@
+product_name: censor
+benchmarks:
+  - name: "censor 全部op pulp|terror|politician"
+    tsv:
+      - all_640.tsv
+      - all_1280.tsv
+      - all_2560.tsv
+    js: k6.js
+    env:
+      SCENES: "pulp|terror|politician|ads"
+    vus:
+      - 1
+      - 10
+      - 30
+  - name: censor 单op pulp
+    tsv:
+      - pulp_640.tsv
+      - pulp_1280.tsv
+      - pulp_2560.tsv
+      - pulp-ava-pulp_640.tsv
+      - pulp-ava-pulp_1280.tsv
+      - pulp-ava-pulp_2560.tsv
+      - pulp-endpoint_640.tsv
+      - pulp-endpoint_1280.tsv
+      - pulp-endpoint_2560.tsv
+    js: k6.js
+    env:
+      SCENES: pulp
+    vus:
+      - 1
+      - 10
+      - 30
+      - 50
+  - name: censor 单op terror
+    tsv:
+      - terror_640.tsv
+      - terror_1280.tsv
+      - terror_2560.tsv
+      - terror-detect_640.tsv
+      - terror-detect_1280.tsv
+      - terror-detect_2560.tsv
+      - terror-endpoint_640.tsv
+      - terror-endpoint_1280.tsv
+      - terror-endpoint_2560.tsv
+    js: k6.js
+    env:
+      SCENES: terror
+    vus:
+      - 1
+      - 10
+      - 30
+  - name: censor 单op politician
+    tsv:
+      - politician_640.tsv
+      - politician_1280.tsv
+      - politician_2560.tsv
+      - politician-four_face_640.tsv
+      - politician-four_face_1280.tsv
+      - politician-four_face_2560.tsv
+      - politician-no_face_640.tsv
+      - politician-no_face_1280.tsv
+      - politician-no_face_2560.tsv
+      - politician-one_face_640.tsv
+      - politician-one_face_1280.tsv
+      - politician-one_face_2560.tsv
+    js: k6.js
+    env:
+      SCENES: politician
+    vus:
+      - 1
+      - 10
+      - 30
+  - name: censor 单op ads
+    tsv:
+      - ads_640.tsv
+      - ads_1280.tsv
+      - ads_2560.tsv
+      - ads-qrcode_640.tsv
+      - ads-qrcode_1280.tsv
+      - ads-qrcode_2560.tsv
+      - ads-no_text_640.tsv
+      - ads-no_text_1280.tsv
+      - ads-no_text_2560.tsv
+      - ads-with_text_640.tsv
+      - ads-with_text_1280.tsv
+      - ads-with_text_2560.tsv
+    js: k6.js
+    env:
+      SCENES: ads
+    vus:
+      - 1
+      - 10
+      - 30
+  # - name: eval politician.evalFacexDetect
+  #   tsv:
+  #     - all.tsv
+  #   js: eval.js
+  #   env:
+  #     APP: politician.evalFacexDetect
+  #   vus:
+  #     - 1
+  #     - 10
+  
+  # - name: eval pulp.evalPulp
+  #   tsv:
+  #     - all.tsv
+  #   js: eval.js
+  #   env:
+  #     APP: pulp.evalPulp
+  #   vus:
+  #     - 1
+  #     - 10
+  #     - 20
+  # - name: eval pulp.evalPulpFilter
+  #   tsv:
+  #     - all.tsv
+  #   js: eval.js
+  #   env:
+  #     APP: pulp.evalPulpFilter
+  #   vus:
+  #     - 1
+  #     - 10
+  #     - 20
+  # - name: eval terror.evalTerrorMixup
+  #   tsv:
+  #     - all.tsv
+  #   js: eval.js
+  #   env:
+  #     APP: terror.evalTerrorMixup
+  #   vus:
+  #     - 1
+  #     - 10
+  #     - 20      
+  # - name: eval terror.evalTerrorDetect
+  #   tsv:
+  #     - all.tsv
+  #   js: eval.js
+  #   env:
+  #     APP: terror.evalTerrorDetect
+  #   vus:
+  #     - 1
+  #     - 10
+  #     - 20     

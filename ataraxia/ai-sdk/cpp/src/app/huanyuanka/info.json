@@ -1,0 +1,24 @@
+{
+    "info_type": "tensord",
+    "name": "mix",
+    "version": "0.2.0",
+    "model": {
+        "prototxt": "models.prototxt",
+        "tar_file": "",
+        "alias": {
+            "mix/0/net.bin": "mix_engin.bin",
+            "fo/0/net.bin": "onet.bin",
+            "ff/0/net.bin": "face-feature-res18.bin"
+        }
+    },
+    "run": {
+        "image": "mix",
+        "batch_size": 8
+    },
+    "test": {},
+    "custom_files": {},
+    "custom_values": {
+        "gpu_id": 0,
+        "model_num": 3
+    }
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -ex
+rm -rf evals
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/evals .
+cp $QBOXROOT/ataraxia/inference/zhatu/python/eval.py evals/eval.py
+
+rm -rf build
+mkdir build
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/inference/py build/

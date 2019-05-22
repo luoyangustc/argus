@@ -1,0 +1,2 @@
+argus-hack-watch: cd hack && exec ../../../../bin/argus-hack-watch -p 8560
+face_group: cd hack && ENV=LOCAL CONFIG_HOSTS=localhost:2379 PORT_HTTP=10001 exec ../../../../bin/dbstorage_service -f ../docker/argus/dbstorage/dbstorage_service/dbstorage_service.conf

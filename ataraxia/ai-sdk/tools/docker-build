@@ -1,0 +1,146 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""docker-build.
+
+Usage:
+  docker-build ([-f | --file string]) PATH ([-t | --tag list])
+  docker-build (-h | --help)
+  docker-build --version
+
+Options:
+  -h --help          Show this screen.
+  --version          Show version.
+  -f, --file string  Name of the Dockerfile (Default is 'PATH/template.Dockerfile')
+  -t, --tag list     Name and optionally a tag in the 'name:tag' format
+
+"""
+import os
+import re
+import subprocess
+from docopt import docopt
+from jinja2 import Template
+
+# import sys
+# sys.path.append(
+#     os.path.join(os.path.abspath(os.path.dirname(__file__)), 'python'))
+
+DOCKERFILES = os.path.join(os.path.abspath(
+    os.path.dirname(__file__)), './dockerfiles')
+
+
+def read_lines(name):
+    '''read lines from file'''
+    with open(name) as file_:
+        return file_.readlines()
+
+
+def write_lines(name, lines):
+    '''write lines to file'''
+    with open(name, 'w') as file_:
+        file_.writelines(lines)
+
+class RunCmdException(Exception):
+    '''RunCmdException'''
+    pass
+
+def main(arg):
+    '''
+Dockerfile.template.example
+
+=> x1
+==> Dockerfile
+FROM base1
+RUN ls
+
+==> tag
+x1_name::x1_tag
+
+=> x2
+==> Dockerfile
+FROM base2
+RUN ls
+
+=> .
+==> Dockerfile.template
+#TEMPLATE x1 as x1
+#TEMPLATE x2 as x2
+
+FROM x3 as x3
+RUN ls
+
+FROM base
+
+COPY --from=x1 aa aa
+COPY --from=x2 bb bb
+COPY --from=x3 cc cc
+
+==> Dockerfile
+FROM base1 as x1
+RUN ls
+
+FROM base2 as x2
+RUN ls
+
+FROM x3 as x3
+RUN ls
+
+FROM base
+
+COPY --from=x1 aa aa
+COPY --from=x2 bb bb
+COPY --from=x3 cc cc
+
+=> docker build
+docker build
+    -f Dockerfile .
+    --cache-from x1_name::x1_tag
+    --cache-from final::laster
+    --tag final::laster
+
+'''
+    path = arg['PATH']
+    tfile = arg['--file'][0] if arg['--file'] \
+        else os.path.join(path, 'template.Dockerfile')
+
+    lines = []
+    caches = []
+    for line in read_lines(tfile):
+        ret = re.search(r'#TEMPLATE (.*) as (.*)', line.strip(), re.M | re.I)
+        if not ret:
+            lines.append(line)
+            continue
+
+        name = ret.group(1)
+        stage = ret.group(2)
+
+        lines2 = read_lines(os.path.join(DOCKERFILES, name, "Dockerfile"))
+        lines.append("{0} as {1}\n".format(lines2[0].strip(), stage))
+        lines = lines + lines2[1:]
+        lines[-1] = lines[-1] if lines[-1][-1] == "\n" else lines[-1] + "\n"
+        lines.append("#" * 80 + "\n")
+
+        tag_file = os.path.join(DOCKERFILES, name, "tag")
+        if os.path.exists(tag_file):
+            caches.append(read_lines(tag_file)[0].strip())
+
+    write_lines(os.path.join(path, "Dockerfile"), lines)
+
+    cmd = Template('''docker build {{ path }} \
+    -f {{ path }}/Dockerfile{% for cache in caches %} \ 
+    --cache-from {{ cache }}{% endfor %}{% for tag in tags %} \
+    --tag {{ tag }}{% endfor %}
+''').render(path=path, caches=caches, tags=arg['--tag'])
+
+    print cmd
+    # return
+
+    process = subprocess.Popen(cmd, shell=True, executable='/bin/bash')
+    process.wait()
+    if process.returncode != 0:
+        raise RunCmdException()
+
+
+if __name__ == '__main__':
+
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    main(docopt(__doc__, version='0.5'))

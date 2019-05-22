@@ -1,0 +1,117 @@
+# 建议选取单机P4*4，0-2号卡部署3*facex-detect+3*facex-feature，3号卡部署人脸库GPU版本
+# feature_group_private_cpu需要1500*block; feature_group_private_gpu需要200*block
+# 全量仿真底库初始化需要1小时左右
+product_name: face
+benchmarks:
+  - name: "face-search CPU+20w底库"
+    tsv:
+      - all.tsv
+      - face.tsv
+    js: k6.js
+    env:
+      PORT: "6126"
+      GROUP: "cpu_20w"
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: "face-search GPU+20w底库"
+    tsv:
+      - all.tsv
+      - face.tsv
+    js: k6.js
+    env:
+      PORT: "6125"
+      GROUP: "gpu_20w"
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: "face-search CPU+300w底库"
+    tsv:
+      - all.tsv
+      - face.tsv
+    js: k6.js
+    env:
+      PORT: "6126"
+      GROUP: "cpu_300w"
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: "face-search GPU+300w底库"
+    tsv:
+      - all.tsv
+      - face.tsv
+    js: k6.js
+    env:
+      PORT: "6125"
+      GROUP: "gpu_300w"
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: "face-search CPU+2000w底库"
+    tsv:
+      - all.tsv
+      - face.tsv
+    js: k6.js
+    env:
+      PORT: "6126"
+      GROUP: "cpu_2000w"
+    vus:
+      - 1
+      - 2
+      - 3
+  - name: "face-search 入库,开启质量评估"
+    tsv:
+      - single-face.tsv
+    js: add-face-k6.js
+    env:
+      PORT: "6125"
+      GROUP: "add-face-group"
+      # 是否开启质量评估 TRUE or FALSE
+      REJECT: "TRUE"
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: "face-search 入库,关闭质量评估"
+    tsv:
+      - single-face.tsv
+    js: add-face-k6.js
+    env:
+      PORT: "6125"
+      GROUP: "add-face-group"
+      # 是否开启质量评估 TRUE or FALSE
+      REJECT: "FALSE"
+    vus:
+      - 1
+      - 10
+      - 20
+init:
+  - name: face-search
+    precision: 4
+    dimension: 512
+    groups:
+      - name: cpu_20w
+        port: 6126
+        size: 200000
+      - name: cpu_300w
+        port: 6126
+        size: 3000000
+      - name: cpu_2000w
+        port: 6126
+        size: 20000000
+      - name: gpu_20w
+        port: 6125
+        size: 200000
+      - name: gpu_300w
+        port: 6125
+        size: 3000000
+      - name: add-face-group
+        port: 6125
+        size: 100
+
+
+  

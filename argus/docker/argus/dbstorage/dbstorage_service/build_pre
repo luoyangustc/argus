@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/dbstorage/dbstorage_service
+cp $QBOXROOT/bin/dbstorage_service .

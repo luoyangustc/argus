@@ -1,0 +1,87 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""cpp-test.
+
+Usage:
+  cpp-test PATH INFO SCRIPT
+  cpp-test (-h | --help)
+  cpp-test --version
+
+Options:
+  -h --help          Show this screen.
+  --version          Show version.
+  PATH               Workspace
+  INFO               Info.json
+  SCRIPT             Script. ./script port xx.tsv image_dir
+
+"""
+import json
+import os
+import re
+import subprocess
+import sys
+from docopt import docopt
+from jinja2 import Template
+
+sys.path.append(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), '../python'))
+
+from aisdk.common.download_model import read_tsv, read_test_image_with_cache
+
+
+def read_lines(name):
+    '''read lines from file'''
+    with open(name) as file_:
+        return file_.readlines()
+
+
+class RunCmdException(Exception):
+    '''RunCmdException'''
+    pass
+
+
+CMD = '''{{ script }} {{ port }} {{ tsv }} {{ dir }}'''
+
+
+def main(arg):
+    '''main'''
+
+    ws = arg['PATH']
+
+    os.chdir("../")
+    cwd = os.getcwd()
+
+    info = {}
+    with open(os.path.join(cwd, arg['INFO'])) as file_:
+        info = json.loads(file_.read())
+
+    tsv = info['test']['tsv']
+    tsv_content = read_tsv(tsv, cache_dir=os.path.join(ws, 'test'))
+    images = [i.split('\t')[0] for i in tsv_content.split('\n') if len(i) > 2]
+    for image in images:
+        read_test_image_with_cache(
+            os.path.join(info['test']['set'], image),
+            cache_dir=os.path.join(ws, 'test', 'images'),
+            cache_key=image,
+        )
+
+    cmd = Template(CMD).render(
+        script=os.path.abspath(arg['SCRIPT']),
+        port="23700",
+        tsv=os.path.join(ws, 'test', tsv),
+        dir=os.path.join(ws, 'test', 'images'),
+    )
+
+    print cmd
+    # return
+
+    process = subprocess.Popen(cmd, shell=True, executable='/bin/bash')
+    process.wait()
+    if process.returncode != 0:
+        raise RunCmdException()
+
+
+if __name__ == '__main__':
+
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    main(docopt(__doc__, version='0.5'))

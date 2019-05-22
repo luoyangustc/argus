@@ -1,0 +1,30 @@
+.vscode
+*.swp
+
+res
+res_build
+secret_env.sh
+
+# Created by https://www.gitignore.io/api/python
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+/htmlcov
+/.coverage
+
+.pytest_cache
+.cache
+
+golang/bin
+golang/pkg
+*.ipynb
+.cache
+build*
+cmake-build-debug

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf argus
+git clone $QBOXROOT/src/qiniu.com/argus argus
+
+# go install qiniu.com/argus/cmd/face_group/face_group_worker
+# cp $QBOXROOT/bin/face_group_worker .

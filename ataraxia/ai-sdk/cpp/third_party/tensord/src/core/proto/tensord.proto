@@ -1,0 +1,79 @@
+
+syntax = "proto3";
+
+package tensord.proto;
+
+enum DataType {
+    NONE = 0;
+
+    FLOAT64 = 1;
+    FLOAT32 = 2;
+    FLOAT16 = 3;
+    FLOAT8  = 4;
+
+    INT64 = 5;
+    INT32 = 6;
+    INT16 = 7;
+    INT8  = 8;
+}
+
+message Model {
+
+    string name = 1;
+    int32 version = 2;
+    string platform = 3;
+    int32 maxBatchSize = 4;
+
+    message File {
+        string name = 1;
+        bytes body = 2;
+        string alias = 3;
+    }
+
+    repeated File file = 5;
+
+    message Input {
+        string name = 1;
+        DataType datatype = 2;
+        repeated int32 shape = 3;
+    }
+
+    repeated Input input = 6;
+    
+    message Output {
+        string name = 1;
+        DataType datatype = 2;
+        repeated int32 shape = 3;
+    }
+
+    repeated Output output = 7; 
+}
+
+message Instance {
+
+    string model = 1;
+    int32 version = 2;
+    int32 batchSize = 3;
+
+    enum Kind {
+        GPU = 0;
+        CPU = 1;
+    }
+    
+    message Count {
+        int32 count = 1;
+        int32 batchSize = 2;
+        Kind kind = 3;
+        repeated int32 gpu = 4;
+    }
+
+    repeated Count count = 4;
+}
+
+message ModelConfig {
+
+    string modelRoot = 1;
+    repeated Model model = 2;
+
+    repeated Instance instance = 5;
+}

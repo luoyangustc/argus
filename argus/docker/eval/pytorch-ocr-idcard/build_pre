@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -ex
+
+GOOS=linux go install qiniu.com/argus/cmd/serving-eval
+cp $QBOXROOT/bin/serving-eval .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/serving-eval/serving-eval.conf .
+

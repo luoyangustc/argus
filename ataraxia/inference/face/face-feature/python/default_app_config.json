@@ -1,0 +1,12 @@
+{
+    "app": "face_feature",
+    "workspace": "./",
+    "use_device": "GPU",
+    "batch_size": 2,
+
+    "model_files": {},
+    "model_params": {
+        "gpu_id": 0,
+        "roi_scale": 1.0
+    }
+}

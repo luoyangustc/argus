@@ -1,0 +1,36 @@
+product_name: censor
+benchmarks:
+  - name: "terror_complex"
+    tsv:
+      - all.tsv
+      - terror-normal1.tsv
+      - terror-normal2.tsv
+      - terror.tsv
+    js: k6.js
+    env:
+      SCENES: "terror_complex"
+    vus:
+      - 1
+      - 10
+      - 20
+# ---------------------------------------------------------#
+  - name: eval terror_complex.evalTerrorMixup
+    tsv:
+      - all.tsv
+    js: eval.js
+    env:
+      APP: terror_complex.evalTerrorMixup
+    vus:
+      - 1
+      - 10
+      - 20
+  - name: eval terror_complex.evalTerrorDetect
+    tsv:
+      - all.tsv
+    js: eval.js
+    env:
+      APP: terror_complex.evalTerrorDetect
+    vus:
+      - 1
+      - 10
+      - 20

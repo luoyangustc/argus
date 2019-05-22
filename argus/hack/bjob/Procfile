@@ -1,0 +1,9 @@
+argus-hack-watch: cd hack && exec ../../../../bin/argus-hack-watch -p 8559
+
+sts: mkdir -p /tmp/20170510 && cd hack && DEBUG=true exec ../../../../bin/sts -f ../cmd/sts/sts.conf
+
+argus-job-gate: cd hack && PORT_HTTP=6000 CONFIG_HOSTS=localhost:2379 exec ../../../../bin/argus-job-gate -f ../cmd/argus-job-gate/argus-job-gate.conf
+
+master-bucket-censor: cd hack && PORT_HTTP=6001 CONFIG_HOSTS=localhost:2379 JOB_CMD=bucket-censor exec ../../../../bin/bucket-censor-master -f ../cmd/argus-jobs/bucket-censor-master/bucket-censor-master.conf
+worker-inference-image: cd hack && PORT_HTTP=6002 CONFIG_HOSTS=localhost:2379 JOB_WORKER=inference-image exec ../../../../bin/inference-image-worker -f ../cmd/argus-jobs/inference-image-worker/inference-image-worker.conf
+worker-inference-video: cd hack && PORT_HTTP=6003 CONFIG_HOSTS=localhost:2379 JOB_WORKER=inference-video DEBUG=TRUE exec ../../../../bin/inference-video-worker -f ../cmd/argus-jobs/inference-video-worker/inference-video-worker.conf

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -ex
+
+GOOS=linux go install qiniu.com/argus/cmd/serving-eval
+cp $QBOXROOT/bin/serving-eval .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/serving-eval/serving-eval.conf .
+
+rm -rf evals
+mkdir evals
+cp -r $QBOXROOT/ava/docker/scripts/evals/utils evals/
+cp -r $QBOXROOT/ava/docker/scripts/evals/mxnet_base evals/
+cp -r $QBOXROOT/ava/docker/scripts/rcnn .
+cp $QBOXROOT/ava/docker/scripts/evals/__init__.py evals/
+cp $QBOXROOT/ava/docker/scripts/evals/mxnet_classify.py evals/eval.py

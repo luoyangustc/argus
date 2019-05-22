@@ -1,0 +1,39 @@
+
+syntax = "proto3";
+
+package inference.wa;
+
+// option cc_enable_arenas = true;
+
+message ForwardRequest {
+  message Data {
+    bytes body = 3;
+  }
+
+  Data data = 1;
+  int32 h = 5;
+  int32 w = 6;
+}
+
+message ForwardResponse {
+  int32 code = 1;
+  string message = 2;
+
+  message Box {
+      float xmin = 1;
+      float ymin = 2;
+      float xmax = 3;
+      float ymax = 4;
+      float score = 5;
+      int32 label = 6;
+  }
+
+  repeated Box boxes = 5;
+
+  message Label {
+    int32 index = 1;
+    float score = 2;
+  }
+
+  repeated Label label = 6;
+}

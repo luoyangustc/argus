@@ -1,0 +1,30 @@
+package main
+
+import (
+	_ "qiniu.com/argus/licence"
+	"qiniu.com/argus/service/scenario"
+	SCENARIO "qiniu.com/argus/service/scenario/{{ app.scenario }}"
+
+{%- for srv_pkg in app.services %}
+	srv_{{loop.index}} "{{ srv_pkg }}"
+{%- endfor %}
+)
+
+func main() {
+	ss := SCENARIO.New()
+	scenario.Main(ss, func() error {
+		registers := make([]func(s interface{}), 0)
+{%- for srv_pkg in app.services %}
+		registers = append(registers, srv_{{loop.index}}.Import("{{ srv_pkg }}"))
+{%- endfor %}
+		for _, register := range registers {
+			register(ss)
+		}
+{%- if app.async is defined and app.async %}
+		if err := ss.Async(); err != nil {
+			return err
+		}
+{%- endif %}	
+	return nil
+	})
+}

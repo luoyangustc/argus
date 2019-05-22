@@ -1,0 +1,208 @@
+{
+    "router": {
+        "port": "6789"
+    },
+    "version": "v1",
+    "services": {
+        "qiniu.com/argus/service/service/image/pulp/image_sync": {
+            "evals": {
+                "evalPulp": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/pulp"
+                },
+                "evalPulpFilter": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/pulp-filter"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/terror/image_sync": {
+            "evals": {
+                "evalTerrorMixup":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/terror-mixup"
+                },
+                "evalTerrorDetect": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/terror-detect"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/politician/image_sync": {
+            "evals": {
+                "evalFacexDetect": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-detect"
+                },
+                "evalFacexFeatureV4": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-feature-v4"
+                },
+                "evalPolitician": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/politician"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/face/image_sync": {
+            "evals": {
+                "facex-detect": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-detect"
+                },
+                "facex-feature-v4": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-feature-v4"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ads/image_sync": {
+            "evals": {
+                "evalAdsQrcode": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsQrcode"
+                },
+                "evalAdsDetect": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsDetect"
+                },
+                "evalAdsRecognition": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsRecognition"
+                },
+                "evalAdsClassifier": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsClassifier"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/censor/image_sync": {
+            "evals": {
+                "censor-evalFaceDetect": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-detect"
+                },
+                "censor-evalFacexFeatureV4": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/facex-feature-v4"
+                },
+                "censor-evalPolitician": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/politician"
+                },
+                "censor-evalTerrorMixup": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/terror-mixup"
+                },
+                "censor-evalTerrorDetect": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/terror-detect"
+                },
+                "censor-evalPulp": {
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/pulp"
+                },
+                "censor-evalAdsQrcode": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsQrcode"
+                },
+                "censor-evalAdsDetect": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsDetect"
+                },
+                "censor-evalAdsRecognition": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsRecognition"
+                },
+                "censor-evalAdsClassifier": {
+                    "host": "http://100.100.62.75:9000",
+                    "redirect": "/v1/eval/qiniu.com.argus.service.service.image.ads.image_sync.evalAdsClassifier"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocrtext/image_sync":{
+            "evals":{
+                "ocr-classify":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-classify"
+                },
+                "ocr-ctpn":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-ctpn"
+                },
+                "ocr-recognize":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-recognize"
+                },
+                "ocr-scene-detect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-detect"
+                },
+                "ocr-scene-recog":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-recog"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocridcard/image_sync":{
+            "evals":{
+                "ocr-scene-detect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-detect"
+                },
+                "ocr-sari-crann":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-crann"
+                },
+                "ocr-sari-id-pre":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-id-pre"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocrbankcard/image_sync":{
+            "evals":{
+                "evalOcrSariBankcardDetect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-ctpn"
+                },
+                "evalOcrSariBankcardRecognize":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-crann"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/objectdetect/image_sync":{
+            "evals":{
+                "object-detect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/detection"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/scene/image_sync":{
+            "evals":{
+                "scene":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/scene"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocrvat/image_sync":{
+            "evals":{
+                "ocr-detect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-vat"
+                },
+                "ocr-recog":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-crann"
+                },
+                "ocr-post":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-vat"
+                }
+            }
+        }
+    }
+}

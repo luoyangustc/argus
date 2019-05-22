@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf evals
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/evals .
+cp $QBOXROOT/ataraxia/inference/ocr/detection/east-ad/src/main.py evals/eval.py
+
+rm -rf src
+cp -r $QBOXROOT/ataraxia/inference/ocr/detection/east-ad/src src/
+
+rm -rf build
+mkdir build
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/inference/py build/

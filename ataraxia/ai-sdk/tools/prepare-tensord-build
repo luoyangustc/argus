@@ -1,0 +1,110 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""prepare-tensord-build
+
+Usage:
+  prepare-tensord-build PATH INFO
+  prepare-tensord-build (-h | --help)
+  prepare-tensord-build --version
+
+Options:
+  -h --help          Show this screen.
+  --version          Show version.
+  PATH               Workspace
+  INFO               Info.json
+
+"""
+import json
+import os
+import re
+import subprocess
+import sys
+from docopt import docopt
+from jinja2 import Template
+
+sys.path.append(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), '../python'))
+
+from aisdk.common.download_model import download_model
+
+
+def read_lines(name):
+    '''read lines from file'''
+    with open(name) as file_:
+        return file_.readlines()
+
+
+def write_lines(name, lines):
+    '''write lines to file'''
+    with open(name, 'w') as file_:
+        file_.writelines(lines)
+
+
+def mkdirs(*args):
+    d = os.path.join(*args)
+    if not os.path.isdir(d):
+        os.makedirs(d)
+
+
+def mkdirs_parent(*args):
+    d = os.path.dirname(os.path.join(*args))
+    mkdirs(d)
+
+
+def main(arg):
+    '''main'''
+
+    ws = arg['PATH']
+
+    os.chdir("../")
+    cwd = os.getcwd()
+
+    info = {}
+    infoname = arg['INFO'] \
+        if arg['INFO'].startswith('/') or arg['INFO'].startswith('.') \
+        else os.path.join(cwd, arg['INFO'])
+    with open(infoname, 'r') as file_:
+        info = json.loads(file_.read())
+
+    if info.get("info_type", None) is None:
+        return
+
+    with open(
+            os.path.join(os.path.dirname(infoname),
+                         info['model']['prototxt']),
+            'r') as f:
+        body = f.read()
+    with open(os.path.join(ws, "models.prototxt"), 'w+') as f:
+        f.write(body)
+    mkdirs(ws, 'tmp')
+    mkdirs(ws, 'models')
+
+    if info['model'].get('tar_file', None):
+        filename = os.path.join(ws, 'tmp',
+                                info['model']['tar_file'].split('/')[-1])
+        download_model(filename,
+                       key=info['model']['tar_file'],
+                       model_dir=os.path.join(ws, 'tmp'),
+                       )
+        import tarfile
+        with tarfile.open(filename, 'r:gz' if filename.endswith(".gz") else 'r:') as t:
+            t.extractall(path=os.path.join(ws, 'tmp'))
+        for name, alias in info['model'].get("alias", {}).items():
+            mkdirs_parent(ws, 'models', name)
+            os.rename(os.path.join(ws, 'tmp', alias),
+                      os.path.join(ws, 'models', name))
+
+    if info['model'].get('files', {}):
+        for key, value in info['model'].get('files', {}).items():
+            mkdirs_parent(ws, 'models', key)
+            download_model(
+                os.path.join(ws, 'models', key),
+                key=value,
+                model_dir=os.path.join(ws, 'models'),
+            )
+
+
+if __name__ == '__main__':
+
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    main(docopt(__doc__, version='0.5'))

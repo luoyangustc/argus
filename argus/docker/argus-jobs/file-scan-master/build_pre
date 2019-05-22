@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/argus-jobs/file-scan-master
+cp $QBOXROOT/bin/file-scan-master .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/argus-jobs/file-scan-master/file-scan-master.conf .

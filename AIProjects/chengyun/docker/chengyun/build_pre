@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/chengyun/app/chengyun
+cp -r $QBOXROOT/bin/linux_amd64/chengyun .
+cp $QBOXROOT/src/qiniu.com/argus/AIProjects/chengyun/app/chengyun/chengyun.conf .

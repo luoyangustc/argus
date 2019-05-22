@@ -1,0 +1,19 @@
+{
+  "app_name": "terror_wangan_mixup",
+  "build": {
+    "model_tar": "res/model/ava-terror-wangan-mixup_1206-v2.1.tar"
+  },
+  "model_files": {
+    "fine_weight.caffemodel": "res/model/ava-terror-wangan-mixup_1206-v2.1/fine_weight.caffemodel",
+    "fine_labels.csv": "res/model/ava-terror-wangan-mixup_1206-v2.1/fine_labels.csv",
+    "fine_deploy.prototxt": "res/model/ava-terror-wangan-mixup_1206-v2.1/fine_deploy.prototxt",
+    "det_weight.caffemodel": "res/model/ava-terror-wangan-mixup_1206-v2.1/det_weight.caffemodel",
+    "det_labels.csv": "res/model/ava-terror-wangan-mixup_1206-v2.1/det_labels.csv",
+    "det_deploy.prototxt": "res/model/ava-terror-wangan-mixup_1206-v2.1/det_deploy.prototxt"
+  },
+  "batch_size": 2,
+  "use_device": "GPU",
+  "custom_params": {
+    "percentage_fine": 0.6
+  }
+}

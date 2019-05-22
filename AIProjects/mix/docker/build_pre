@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -ex
+
+licence_tags=""
+if [ "${AVA_LICENCE}" == "true" ] ; then
+    licence_tags="-tags=ava_licence"
+fi
+
+BASE_IMAGE_NAME=`echo $BASE_IMAGE | sed 's/\//\\\\\//g'`
+sed -i 's/BASEIMAGE/'$BASE_IMAGE_NAME'/g' Dockerfile
+
+GOOS=linux go install ${licence_tags} qiniu.com/argus/AIProjects/mix/cmd/mix
+cp $GOPATH/bin/mix .

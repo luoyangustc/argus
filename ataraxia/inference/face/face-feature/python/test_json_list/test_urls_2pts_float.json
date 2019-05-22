@@ -1,0 +1,127 @@
+[{
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_1.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    439.7435793578625,
+                    228.38731698691845,
+                    1084.4714589193463,
+                    1149.0252682864666
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_2.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    565.3160167336464,
+                    323.4610437452793,
+                    1159.5820281505585,
+                    1121.1476954594254
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/1_3.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    291.2320942878723,
+                    176.64935745298862,
+                    618.5259076952934,
+                    650.4821284338832
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_1.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    331.6112211942673,
+                    100.27356869727373,
+                    572.8756106458604,
+                    404.0675298124552
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_4.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    252.67370587587357,
+                    56.93651470541954,
+                    509.66782573610544,
+                    388.8678218200803
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/2_6.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    274.95704209804535,
+                    44.557999700307846,
+                    479.75052896142006,
+                    317.2964684218168
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_1.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    326.8431003987789,
+                    389.85436917841434,
+                    591.2732953727245,
+                    721.9042248502374
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_2.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    349.32168251276016,
+                    161.59288102388382,
+                    578.9457032382488,
+                    439.17470291256905
+                ]
+            }
+        }
+    },
+    {
+        "data": {
+            "uri": "http://p1ad6bkv9.bkt.clouddn.com/facex-feat-test-imgs/original/3_3.jpg",
+            "body": "",
+            "attribute": {
+                "pts": [
+                    467.41818872094154,
+                    357.4043501317501,
+                    755.6631803065538,
+                    768.975928902626
+                ]
+            }
+        }
+    }
+]

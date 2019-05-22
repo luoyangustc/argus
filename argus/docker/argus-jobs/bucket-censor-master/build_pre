@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/argus-jobs/bucket-censor-master
+cp $QBOXROOT/bin/bucket-censor-master .

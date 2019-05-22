@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+rm -rf argus
+cp $QBOXROOT/src/qiniu.com/argus/cmd/feature-search/feature-search.conf .
+git clone $QBOXROOT/src/qiniu.com/argus argus

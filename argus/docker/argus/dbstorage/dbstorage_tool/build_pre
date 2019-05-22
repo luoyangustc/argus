@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux GOARCH=amd64 go install qiniu.com/argus/cmd/dbstorage/dbstorage_tool
+cp $QBOXROOT/bin/dbstorage_tool .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/dbstorage/dbstorage_tool/dbstorage_tool.conf .

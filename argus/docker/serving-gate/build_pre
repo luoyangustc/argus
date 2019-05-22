@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/serving-gate
+cp $QBOXROOT/bin/serving-gate .

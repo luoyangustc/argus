@@ -1,0 +1,8 @@
+# The checks defined here will be run and will display by default as warnings.
+Checks: >
+    -*,
+    bugprone-*,-bugprone-exception-escape,
+    cert-*,-cert-err58-cpp
+
+WarningsAsErrors: >
+    bugprone-sizeof-container

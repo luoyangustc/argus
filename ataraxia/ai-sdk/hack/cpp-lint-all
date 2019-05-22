@@ -1,0 +1,2 @@
+#!/bin/bash
+find . | grep -E '\.(cpp|cc|c|h|cc|hpp)$' | grep -v -E "(pb\.(cc|h))|third_party|golang|build|(framework/zhelpers)|(wa_20181207/net.hpp)|(common/(md5|archiver|boxes|image|time|json|type))" | xargs cpplint

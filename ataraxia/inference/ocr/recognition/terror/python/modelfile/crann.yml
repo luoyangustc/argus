@@ -1,0 +1,7 @@
+CNN:
+    MODEL: "ResNet50"
+RNN:
+    MODEL: "compositelstm"
+    n_In: 2048
+    n_Hidden: 256
+    n_Layer: "Number: for multi layer lstm."

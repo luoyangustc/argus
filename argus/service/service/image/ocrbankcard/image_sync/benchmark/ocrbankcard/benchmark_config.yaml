@@ -1,0 +1,14 @@
+product_name: ocrbankcard
+benchmarks:
+  - name: ocrbankcard
+    tsv:
+      - all.tsv
+      - bankcard.tsv
+      - normal.tsv
+    js: k6.js
+    env:
+      SCENES: ocrbankcard
+    vus:
+      - 1
+      - 10
+  

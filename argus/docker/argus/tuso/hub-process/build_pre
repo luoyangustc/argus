@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/tuso/hub-process
+cp $QBOXROOT/bin/hub-process .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/tuso/hub-process/tuso-hub-process.conf .

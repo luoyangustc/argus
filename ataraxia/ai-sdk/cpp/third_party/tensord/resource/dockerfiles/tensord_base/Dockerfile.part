@@ -1,0 +1,32 @@
+
+RUN apt-get install -y --no-install-recommends \
+    wget \
+    curl \
+    git \
+    build-essential \
+    autoconf \
+    libtool \
+    pkg-config \
+    ca-certificates \
+    libc++-dev \
+    libgoogle-glog-dev \
+    libgflags-dev
+
+RUN cd /tmp && \
+    wget http://devtools.dl.atlab.ai/aisdk/github_release/Kitware/CMake/releases/download/v3.13.2/cmake-3.13.2-Linux-x86_64.sh && \
+    chmod +x cmake-3.13.2-Linux-x86_64.sh && \
+    /tmp/cmake-3.13.2-Linux-x86_64.sh --skip-license --prefix=/usr
+
+ARG PROTOBUF_VERSION=3.6.1
+RUN cd /tmp && \
+    wget http://devtools.dl.atlab.ai/aisdk/github_release/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protobuf-all-${PROTOBUF_VERSION}.tar.gz && \
+    tar -zxvf protobuf-all-${PROTOBUF_VERSION}.tar.gz && \
+    cd protobuf-${PROTOBUF_VERSION} && \
+    ./configure --prefix=/usr && make -j"$(nproc)" && make install 
+
+ARG GRPC_VERSION=1.18.0
+RUN cd /tmp && \
+    wget http://devtools.dl.atlab.ai/aisdk/github_release/grpc/grpc/releases/download/v${GRPC_VERSION}/grpc.tar.gz && \
+    tar -xzvf grpc.tar.gz && \
+    cd grpc && \
+    make -j"$(nproc)" && make install

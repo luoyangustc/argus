@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/tuso/search-master
+cp $QBOXROOT/bin/search-master .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/tuso/search-master/tuso-search-master.conf .

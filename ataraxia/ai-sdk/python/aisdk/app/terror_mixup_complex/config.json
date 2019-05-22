@@ -1,0 +1,23 @@
+{
+  "app_name": "terror_mixup_complex",
+  "build": {
+    "model_tar": "res/model/private_terror-mixup-private-1121-11.tar"
+  },
+  "model_files": {
+    "fine_labels.csv": "res/model/private_terror-mixup-private-1121-11/fine_labels.csv",
+    "coarse_weight.caffemodel": "res/model/private_terror-mixup-private-1121-11/coarse_weight.caffemodel",
+    "det_labels.csv": "res/model/private_terror-mixup-private-1121-11/det_labels.csv",
+    "det_weight.caffemodel": "res/model/private_terror-mixup-private-1121-11/det_weight.caffemodel",
+    "coarse_deploy.prototxt": "res/model/private_terror-mixup-private-1121-11/coarse_deploy.prototxt",
+    "coarse_labels.csv": "res/model/private_terror-mixup-private-1121-11/coarse_labels.csv",
+    "fine_deploy.prototxt": "res/model/private_terror-mixup-private-1121-11/fine_deploy.prototxt",
+    "fine_weight.caffemodel": "res/model/private_terror-mixup-private-1121-11/fine_weight.caffemodel",
+    "det_deploy.prototxt": "res/model/private_terror-mixup-private-1121-11/det_deploy.prototxt"
+  },
+  "batch_size": 8,
+  "use_device": "GPU",
+  "custom_params": {
+    "percentage_fine": 0.6,
+    "percentage_coarse": 0.4
+  }
+}

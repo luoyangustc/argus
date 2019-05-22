@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -ex
+
+if [[ -z $ATARAXIAROOT ]]; then
+    ATARAXIAROOT=../../../
+fi
+
+rm -rf evals
+cp -r $ATARAXIAROOT/ava/atserving/scripts/evals .
+#cp $ATARAXIAROOT/inference/face/face-feature/python/eval_face_features.py evals/eval.py
+cp -r $ATARAXIAROOT/inference/face/face-cluster/python/* evals/
+mv evals/eval_face_cluster.py evals/eval.py
+sed -i 's/eval_face_cluster/eval/g' evals/demo*.py
+
+rm -rf build
+mkdir build
+cp -r $ATARAXIAROOT/ava/atserving/scripts/inference/py build/py_eval

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/bcp
+cp $QBOXROOT/bin/bcp .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/bcp/bcp.conf .

@@ -1,0 +1,15 @@
+product_name: face
+benchmarks:
+  - name: face-detect
+    tsv:
+      - all.tsv
+      - face.tsv
+      - no-face.tsv
+    js: k6.js
+    env:
+      SCENES: face-detect
+    vus:
+      - 1
+      - 10
+      - 20
+  

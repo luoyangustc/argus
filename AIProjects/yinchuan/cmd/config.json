@@ -1,0 +1,72 @@
+{
+    "router": {
+        "port": "6789"
+    },
+    "version": "v1",
+    "services": {
+        "qiniu.com/argus/service/service/image/ocrtext/image_sync":{
+            "evals":{
+                "evalOcrTextClassify":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-classify"
+                },
+                "evalOcrTextCtpn":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-ctpn"
+                },
+                "evalOcrTextRecognize":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-recognize"
+                },
+                "evalOcrSceneDetect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-detect"
+                },
+                "evalOcrSceneRecognize":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-recog"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocridcard/image_sync":{
+            "evals":{
+                "evalOcrSariIdcardDetect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-scene-detect"
+                },
+                "evalOcrSariIdcardRecog":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-crann"
+                },
+                "evalOcrSariIdcardPre":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-id-pre"
+                }
+            }
+        },
+        "qiniu.com/argus/service/service/image/ocrbankcard/image_sync":{
+            "evals":{
+                "evalOcrSariBankcardDetect":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-ctpn"
+                },
+                "evalOcrSariBankcardRecognize":{
+                    "host": "http://ava-serving-gate.cs.cg.dora-internal.qiniu.io:5001",
+                    "redirect": "/v1/eval/ocr-sari-crann"
+                }
+            }
+        },
+        "qiniu.com/argus/AIProjects/yinchuan/ocr/image_sync":{
+            "evals":{
+                "ocr-refinedet":{
+                    "host": "http://100.100.62.13:9000",
+                    "redirect": "/v1/eval/yinchuanclassify.ocr-refinedet"
+                },
+                "ocr-terror":{
+                    "host": "http://100.100.62.13:9000",
+                    "redirect": "/v1/eval/yinchuanclassify.ocr-terror"
+                }
+            }
+        }
+    }
+}

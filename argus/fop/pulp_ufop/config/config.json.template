@@ -1,0 +1,28 @@
+{
+    "port": 9100,
+    "max_concurrent":1000,
+    "bucket": {
+        "ak":"{ak}",
+        "sk":"{sk}",
+        "name":"{name}",
+        "domain":"{domain}"
+    },
+    "auth": {
+        "ak":"{ak}",
+        "sk":"{sk}"
+    },
+    "cmds": [
+        {
+            "name":"pulp",
+            "url":"http://argus.atlab.ai/v1/pulp/recognition"
+        },
+        {
+            "name":"ufop-pulps",
+            "url":"http://jt7e0d9y.nq.cloudappl.com/pulp"
+        },
+        {
+            "name":"audit",
+            "url":"http://pulp.ataraxia.ai/pulp"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/idcensor/app/idcensor
+cp $QBOXROOT/bin/idcensor .
+cp $QBOXROOT/src/qiniu.com/argus/AIProjects/idcensor/app/idcensor/idcensor.conf .

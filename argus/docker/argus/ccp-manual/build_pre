@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/ccp-manual
+cp $QBOXROOT/bin/ccp-manual .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/ccp-manual/ccp-manual.conf .

@@ -1,0 +1,12 @@
+{
+    "env": {
+        "app": "facex_cluster",
+        "workspace": "./"
+    },
+    "custom_params": {
+        "sim_thresh": 0.55,
+        "endian": "big",
+        "incrementally": 1,
+        "min_samples_per_cluster": 2
+    }
+}

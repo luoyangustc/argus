@@ -1,0 +1,18 @@
+{
+    "name": "fs",
+    "version": "0.1.0",
+    "model": {},
+    "run": {
+        "image": "reg.qiniu.com/avaprd/aisdk-face_search:20190128-v195-dev2",
+        "batch_size": 4
+    },
+    "test": {
+        "tsv": "serving/facex-feature/face-feature-r100-ep216-1105/set4/face_feature_regtest_1800-2.tsv",
+        "set": "serving/facex-feature/face-feature-r100-ep216-1105/set4/"
+    },
+    "custom_files": {
+        "features.line": "ava-politician/other-face-search/2018120710302.features.line",
+        "labels.line": "ava-politician/other-face-search/2018120710302.labels.line"
+    },
+    "custom_values": {}
+}

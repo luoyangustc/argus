@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/chengyun/app/zhongxing
+cp -r $QBOXROOT/bin/zhongxing .
+cp $QBOXROOT/src/qiniu.com/argus/AIProjects/chengyun/app/zhongxing/zhongxing.conf .

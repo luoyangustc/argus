@@ -1,0 +1,14 @@
+product_name: ocridcard
+benchmarks:
+  - name: ocridcard
+    tsv:
+      - all.tsv
+      - idcard.tsv
+      - normal.tsv
+    js: k6.js
+    env:
+      SCENES: ocridcard
+    vus:
+      - 1
+      - 10
+  

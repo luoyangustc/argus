@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+package tron.terror_mixup;
+
+message Response{
+    string checkpoint = 1;
+    message Confidences{
+        int32 index = 1;
+        float score = 2;
+        string class = 3;
+    }
+    repeated Confidences confidences = 2;
+}
+
+
+message ForwardRequest {
+    message ForwardData {
+      bytes det_input = 1;
+      bytes cls_input = 2;
+    }
+    ForwardData data = 1;
+  }
+
+message ForwardRequests {
+    repeated ForwardRequest requests = 1;
+}
+
+message ForwardResponse {
+    int32 code = 1;
+    string message = 2;
+    bytes output_det = 3;
+    bytes output_fine = 4;
+    bytes output_coarse = 5;
+    int32 batch_index = 6;
+}
+
+message ForwardResponses {
+    repeated ForwardResponse responses = 1;
+}

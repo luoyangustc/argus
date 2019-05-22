@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+package tron;
+
+message Blob {
+  optional string name = 1;
+  optional string type = 2;
+  repeated int32 shape = 3;
+  repeated float data_f = 4 [packed = true];
+  repeated int32 data_i = 5 [packed = true];
+  repeated bytes data_b = 6;
+}
+
+message Argument {
+  optional string name = 1;
+  optional float s_f = 2;
+  optional int32 s_i = 3;
+  optional string s_s = 4;
+  repeated float v_f = 5;
+  repeated int32 v_i = 6;
+  repeated string v_s = 7;
+}
+
+message OpParam {
+  optional string name = 1;
+  optional string type = 2;
+  repeated string bottom = 3;
+  repeated string top = 4;
+
+  repeated Blob blobs = 5;
+
+  repeated Argument arg = 11;
+}
+
+message NetParam {
+  optional string name = 1;
+  repeated int32 num_class = 2;
+  repeated string out_blob = 3;
+
+  repeated OpParam op = 11;
+  repeated Argument arg = 12;
+}
+
+message ModelInfo {
+  optional string project = 1;
+  optional string version = 2;
+  optional string method = 3;
+}
+
+message MetaNetParam {
+  optional string name = 1;
+  optional ModelInfo model_info = 2;
+
+  repeated NetParam network = 11;
+  repeated Argument arg = 12;
+}

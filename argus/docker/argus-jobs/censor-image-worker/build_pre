@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/argus-jobs/censor-image-worker
+cp $QBOXROOT/bin/censor-image-worker .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/argus-jobs/censor-image-worker/censor-image-worker.conf .

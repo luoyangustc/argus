@@ -1,0 +1,14 @@
+product_name: ocrtext
+benchmarks:
+  - name: ocrtext
+    tsv:
+      - all.tsv
+      - text.tsv
+      - normal.tsv
+    js: k6.js
+    env:
+      SCENES: ocrtext
+    vus:
+      - 1
+      - 10
+  

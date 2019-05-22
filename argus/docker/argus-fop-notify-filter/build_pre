@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/argus-fop/notify-filter
+cp $QBOXROOT/bin/notify-filter notify-filter

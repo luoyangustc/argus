@@ -1,0 +1,35 @@
+{
+    "info_type": "tensord",
+    "name": "ff",
+    "version": "0.2.0",
+    "model": {
+        "prototxt": "models.prototxt",
+        "tar_file": "ava-facex-feature-v4/caffe-mxnet/201811191617.tar",
+        "alias": {
+            "ff/0/model-symbol.json": "feature-model/model-symbol.json",
+            "ff/0/model.params": "feature-model/model-0000.params",
+            "r/0/net.prototxt": "mtcnn-caffe-model/det2.prototxt",
+            "r/0/net.caffemodel": "mtcnn-caffe-model/det2.caffemodel",
+            "o/0/net.prototxt": "mtcnn-caffe-model/det3.prototxt",
+            "o/0/net.caffemodel": "mtcnn-caffe-model/det3.caffemodel",
+            "l/0/net.prototxt": "mtcnn-caffe-model/det4.prototxt",
+            "l/0/net.caffemodel": "mtcnn-caffe-model/det4.caffemodel"
+        }
+    },
+    "run": {
+        "image": "ff",
+        "batch_size": 2
+    },
+    "test": {
+        "tsv": "serving/facex-feature/face-feature-r100-ep216-1105/set4/face_feature_regtest_1800-2.tsv",
+        "set": "serving/facex-feature/face-feature-r100-ep216-1105/set4/"
+    },
+    "custom_files": {},
+    "custom_values": {
+        "gpu_id": 0,
+        "mirror_trick": 0,
+        "batch_size_ff": 4,
+        "feature_output_layer": "fc1",
+        "min_face_size": 50
+    }
+}

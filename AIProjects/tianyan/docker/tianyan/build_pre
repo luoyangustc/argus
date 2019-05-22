@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/tianyan/app/tianyan
+cp -r $QBOXROOT/bin/tianyan .
+cp $QBOXROOT/src/qiniu.com/argus/AIProjects/tianyan/app/tianyan/tianyan.conf .

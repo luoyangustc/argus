@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -ex
+rm -rf src
+cp -Rf $QBOXROOT/ava/platform/src .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/tuso/search-worker/tuso-search-worker.conf .
+docker build -f Dockerfile-compile  -t ava-serving/search-worker-compile .
+docker run --rm -v `pwd`:/go ava-serving/search-worker-compile sh -c 'export CC=clang && export GOPATH=/go && go build -tags "clangcgo" -o /go/search-worker qiniu.com/argus/cmd/tuso/search-worker && go test -bench="BenchmarkDistance" -tags "clangcgo" -run="TestDistance" qiniu.com/argus/argus/tuso/search'

@@ -1,0 +1,19 @@
+{
+  "app_name": "pulp_filter",
+  "build": {
+    "model_tar": "res/model/ava-pulp-filter_mxnet_201811131712.tar"
+  },
+  "model_files": {
+    "deploy.symbol.json": "res/model/ava-pulp-filter_mxnet_201811131712/deploy.symbol.json",
+    "labels.csv": "res/model/ava-pulp-filter_mxnet_201811131712/labels.csv",
+    "weight.params": "res/model/ava-pulp-filter_mxnet_201811131712/weight.params"
+  },
+  "batch_size": 8,
+  "image_width": 224,
+  "use_device": "GPU",
+  "custom_params": {
+    "mean_value": [123.68, 116.779, 103.939],
+    "mean_std": [58.395, 57.12, 57.375],
+    "image_height": 224
+  }
+}

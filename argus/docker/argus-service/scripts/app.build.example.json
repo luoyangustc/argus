@@ -1,0 +1,9 @@
+{
+    "app"       : "app_name",
+    "version"   : "app_release_or_other_uniq_string",
+    "scenario"  : "image_sync",
+    "services": {
+        "qiniu.com/argus/service/service/image/pulp/image_sync"   : {"name": "pulp"},
+        "qiniu.com/argus/service/service/image/terror/image_sync" : {"name": "terror"}
+    }
+}

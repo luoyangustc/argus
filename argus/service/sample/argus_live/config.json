@@ -1,0 +1,57 @@
+{
+    "router": {
+        "port": "6789"
+    },
+    "version": "v1",
+    "workspace": "/tmp/eval/",
+    "default_vframe": {
+        "mode": 0,
+        "interval": 5
+    },
+    "async": {
+        "mgo": {
+            "idle_job_timeout": 30000000000,
+            "mgo_pool_limit": 20,
+            "mgo": {
+                "host": "127.0.0.1:27017",
+                "db": "argus_live",
+                "mode": "strong",
+                "timeout": 5
+            }
+        },
+        "worker": {
+            "pool_max": 10
+        }
+    },
+    "services": {
+        "qiniu.com/argus/service/service/video/live/video": {
+            "service": {
+                "default_vframe": {
+                    "mode": 0,
+                    "interval": 5
+                },
+                "default_save": {
+                    "save_space": "/tmp",
+                    "save_address": "http://127.0.0.1/",
+                    "daily_folder": true
+                },
+                "mgo": {
+                    "idle_job_timeout": 30000000000,
+                    "mgo_pool_limit": 20,
+                    "mgo": {
+                        "host": "127.0.0.1:27017",
+                        "db": "argus_live",
+                        "mode": "strong",
+                        "timeout": 5
+                    }
+                },
+                "worker": {
+                    "pool_max": 10
+                }
+            },
+            "ops": {
+                "qiniu.com/argus/service/service/video/face_search/video": {}
+            }
+        }
+    }
+}

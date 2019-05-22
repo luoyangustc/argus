@@ -1,0 +1,8 @@
+[IMG1] -> [decode img1] -> [face detect IMG1] -> [N * feature IMG1] -> [N * politician IMG1] -> [result IMG1]{origin: N * politician IMG1; offset: 2,0; }
+[IMG2] -> [decode img2] -> [face detect IMG2] -> [M * feature IMG2] -> [M * politician IMG2] -> [result IMG2]
+[face detect IMG1]->{label:"queue"}[2 * face detect]{ origin: face detect IMG1; offset: 0,2;}
+[face detect IMG2]->{label:"queue"}[2 * face detect]{ origin: face detect IMG2; offset: 0,-2;}
+[N * feature IMG1]->{label:"queue"}[N+M * feature]{ origin: N * feature IMG1; offset: 0,2;}
+[M * feature IMG2]->{label:"queue"}[N+M * feature]{ origin: M * feature IMG2; offset: 0,-2;}
+[N * politician IMG1]->{label:"queue"}[N+M * politician]{ origin: N * politician IMG1; offset: 0,2;}
+[M * politician IMG2]->{label:"queue"}[N+M * politician]{ origin: M * politician IMG2; offset: 0,-2;}

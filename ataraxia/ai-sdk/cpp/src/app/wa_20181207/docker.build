@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import json
+import os
+import subprocess
+import sys
+
+sys.path.append(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), '../../../../python'))
+
+from aisdk.common.download_model import download_model
+
+
+class RunCmdException(Exception):
+    '''RunCmdException'''
+    pass
+
+
+def main(args):
+    '''main'''
+
+    dir = os.path.dirname(os.path.realpath(__file__))
+    info = {}
+    with open(os.path.join(dir, "info.json")) as file_:
+        info = json.loads(file_.read())
+
+    for key, value in info.get("build", {}).get("files", {}).items():
+        download_model(
+            os.path.join(args[0], key),
+            key=value,
+            model_dir=args[0],
+        )
+
+    cmd = "{} -f {} ".format(
+        os.path.join(dir, "../../../../tools/docker-build"),
+        os.path.join(dir, "template.Dockerfile"),
+    ) + " ".join(args)
+    print cmd
+    # return
+
+    process = subprocess.Popen(cmd, shell=True, executable='/bin/bash')
+    process.wait()
+    if process.returncode != 0:
+        raise RunCmdException()
+
+
+if __name__ == '__main__':
+
+    # os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    main(sys.argv[1:])

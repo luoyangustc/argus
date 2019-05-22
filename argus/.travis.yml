@@ -1,0 +1,30 @@
+language: go
+dist: trusty
+cache:
+  directories:
+    - $TRAVIS_BUILD_DIR/../../../pkg
+    - $TRAVIS_BUILD_DIR/../../../bin
+matrix:
+  include:
+    - go: 1.10.3
+      env:
+        - TEST_SUITE=platform-ut
+      addons:
+        apt:
+          sources:
+            - mongodb-upstart
+            - mongodb-3.0-trusty
+          packages:
+            - mongodb-org-server
+            - mongodb-org-shell
+      services: mongodb
+      install:
+        - curl -L  https://github.com/coreos/etcd/releases/download/v3.2.0-rc.0/etcd-v3.2.0-rc.0-linux-amd64.tar.gz -o etcd.tar.gz && tar xzvf etcd.tar.gz && cd etcd-v3.2.0-rc.0-linux-amd64/
+        - ./etcd  --wal-dir /dev/shm/etcd-wal --data-dir /dev/shm/etcd-data &
+        - ETCDCTL_API=3 ./etcdctl get --prefix ''
+      go_import_path: qiniu.com/argus
+      script:
+        - cd $TRAVIS_BUILD_DIR
+        - make install
+        - wget https://storage.googleapis.com/qiniu/golangci-lint && chmod +x golangci-lint && ./golangci-lint run
+        - if [[ "$TRAVIS_BRANCH" == "dev" && "$TRAVIS_PULL_REQUEST" != "false" ]]; then export GO_TEST_ARGS="" && export CONCURRENT_NUM=8 && export EXCEPT_PKGS="test" && curl https://aone.qiniu.io/api/coverage/collect?token=A59B8029-E9A1-4FF3-B72B-3657CEAC64D4 | bash; else make test; fi

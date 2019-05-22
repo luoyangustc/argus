@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf evals
+mkdir evals
+cp -r $ATARAXIAROOT/ava/atserving/scripts/evals/utils evals/
+cp $ATARAXIAROOT/ava/atserving/scripts/evals/__init__.py evals/
+mv $ATARAXIAROOT/inference/feature/video/python/feature-for-video-classify.py evals/eval.py
+cp -r $ATARAXIAROOT/inference/feature/video/python evals/video_feature
+
+rm -rf build
+mkdir build
+cp -r $ATARAXIAROOT/ava/atserving/scripts/inference/py build/py_eval

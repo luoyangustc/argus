@@ -1,0 +1,4 @@
+nsqd: mkdir -p hack/run/nsq-data && exec nsqd -lookupd-tcp-address=127.0.0.1:4160 -broadcast-address 127.0.0.1 -data-path hack/run/nsq-data
+nsqlookupd: nsqlookupd
+nsqadmin: nsqadmin --lookupd-http-address=127.0.0.1:4161
+etcd: mkdir -p hack/run/etcd-data && exec etcd --data-dir hack/run/etcd-data

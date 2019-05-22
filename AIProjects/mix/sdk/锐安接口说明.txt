@@ -1,0 +1,69 @@
+struct pic_info_t
+{
+    int pid;
+    char zip_name[64];
+    char bcp_name[64];
+    char data_id[64];
+    int line;
+    char pic_name[64];
+};
+
+struct metrics_info_t
+{
+    // total pictures; total= done + waiting + skip
+    uint total;
+    // skipped pictures
+    uint skip;
+    // pictures in the queue
+    uint waiting;
+    // parsed pictures; done = censor + error
+    uint done;
+    // censor pictures; censor = noraml + pulp + terror + politicion + march + text
+    uint censor;
+    // parse error pictures
+    uint error;
+    // qps of censor pictures in the last 5 seconds
+    float last_qps;
+    // (1-normal/censor) last 5 seconds
+    float last_filter_rate;
+    // qps of censor pictures since start up
+    float qps;
+    // (1-normal/censor) since start up
+    float filter_rate;
+    // normal pictures
+    uint normal;
+    // pulp pictures
+    uint pulp;
+    // terror pictures
+    uint terror;
+    // politicion pictures
+    uint politicion;
+    // march pictures
+    uint march;
+    // text pictures
+    uint text;
+    // runtime since start up by second
+    uint runtime;
+};
+
+enum
+{
+    LABEL_NORMAL = 0,
+    LABEL_MARCH = 1,
+    LABEL_TEXT = 2, 
+    LABEL_POLITICIAN = 3,
+    LABEL_TERROR = 4,
+    LABEL_PULP = 5,
+};
+
+1、操作系统：redhat6.4、redhat7.3，占用内存最多8GB。
+2、接口应该提供初始化函数，功能是初始化基本参数，包含超时时间。
+3、描述文件输出目录由静态配置文件指定，服务运行时加载。
+4、我们程序调用时，会将上面pic_info_t类型的变量与图片地址、大小，一起传递，pic_info_t中存放的是与此张图片相关的信息，需要在gpu分类后，与分类结果一起输出。
+5、提供分类器运行统计的接口和日志输出，包含图片等待数、已处理图片数、敏感图片数、丢弃图片数、各敏感分类图片数、运行时间等。
+6、gpu收到图片相关信息后，当满足图片张数或超时条件时，如果检测到此批次中有敏感数据，就写一个描述文件，考虑到磁盘IO，暂时只写敏感数据的。描述文件文件名命名方式可参考：时间戳.txt的格式。文件内容格式：每行包含pic_info_t的全部信息和敏感数据类型，以tab分隔。举例如下，
+7、type=0（normal）时置信度为0，其他分类有相应置信度，精确到小数点后6位
+
+201903041055.txt:
+pid zip_name                                            bcp_name                                        data_id                     line pic_name                           type   score
+2	144-746736751-000000-000000-1512616353-00003.zip	144-0-1512616353-00003-WA_SOURCE_0001-0.bcp		512616353100000000000141	20	3_httppost_1512616353_000012.jpg	4      0.972301

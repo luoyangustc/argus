@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -ex
+
+GOOS=linux go install qiniu.com/argus/cmd/serving-eval
+cp $QBOXROOT/bin/serving-eval .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/serving-eval/serving-eval.conf .
+
+rm -rf evals
+mkdir evals
+cp -r $QBOXROOT/ava/docker/scripts/evals.v2/utils evals/
+cp -r $QBOXROOT/ava/docker/scripts/evals.v2/caffe_base evals/
+cp $QBOXROOT/ava/docker/scripts/evals.v2/__init__.py evals/
+cp $QBOXROOT/ava/docker/scripts/evals.v2/caffe_detect_ssd_mb.py evals/eval.py
+
+rm -rf build
+mkdir build
+cp -r $QBOXROOT/ava/docker/scripts/inference_examples/py_eval build/

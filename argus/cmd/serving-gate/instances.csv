@@ -1,0 +1,5 @@
+cmd, version, host
+facex-detect,v1,http://localhost:9100
+facex-detect,-,http://localhost:9101
+facex-detect,v1,http://localhost:9102
+facex-feature,v1,http://localhost:9103

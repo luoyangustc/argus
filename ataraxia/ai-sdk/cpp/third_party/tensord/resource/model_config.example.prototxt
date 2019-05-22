@@ -1,0 +1,18 @@
+modelRoot: "."
+model:
+{
+    name: "foo"
+    version: 0
+    platform: "foo"
+}
+instance:
+{
+    model: "foo"
+    version: 0
+    batchSize: 2
+    count:
+    {
+        count: 1
+        kind: CPU
+    }
+}

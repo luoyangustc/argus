@@ -1,0 +1,98 @@
+ROOT_PATH=../
+
+SRC_PATH=${ROOT_PATH}src/
+INC_PATH=${ROOT_PATH}inc/
+
+LIBSPATH=${ROOT_PATH}libs/
+LIB_TARGET=${LIBSPATH}libc5_base.a
+OBJSPATH=./objs/
+
+BASECLASSOBJS= \
+	${OBJSPATH}vos_addr_resolv.o \
+    ${OBJSPATH}vos_base64.o \
+    ${OBJSPATH}vos_bit_t.o \
+	${OBJSPATH}vos_config.o \
+	${OBJSPATH}vos_core_unix.o \
+    ${OBJSPATH}vos_ctype.o \
+	${OBJSPATH}vos_des.o \
+    ${OBJSPATH}vos_file_access.o \
+    ${OBJSPATH}vos_file_io.o \
+	${OBJSPATH}vos_guid.o \
+	${OBJSPATH}vos_hex_encode.o \
+	${OBJSPATH}vos_list.o \
+	${OBJSPATH}vos_log.o \
+	${OBJSPATH}vos_rand.o \
+	${OBJSPATH}vos_sock.o \
+	${OBJSPATH}vos_string.o \
+	${OBJSPATH}vos_sock_select.o \
+	${OBJSPATH}vos_time.o  \
+
+CC = gcc
+CFLAGS += -Wall -static -O2 -Os  -g -DDNL_SDK_UNIX -DOS_LINUX
+
+INCLUDES=-I ${INC_PATH}
+
+#all: ${BASECLASSOBJS}
+.PHONY:all
+${LIB_TARGET}:${BASECLASSOBJS}
+	ar -rc ${LIB_TARGET} ${BASECLASSOBJS}
+
+${OBJSPATH}vos_addr_resolv.o:${SRC_PATH}vos_addr_resolv.c ${INC_PATH}vos_addr_resolv.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_base64.o:${SRC_PATH}vos_base64.c ${INC_PATH}vos_base64.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_bit_t.o:${SRC_PATH}vos_bit_t.c ${INC_PATH}vos_bit_t.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_config.o:${SRC_PATH}vos_config.c ${INC_PATH}vos_config.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_ctype.o:${SRC_PATH}vos_ctype.c ${INC_PATH}vos_ctype.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_des.o:${SRC_PATH}vos_des.c ${INC_PATH}vos_des.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_file_access.o:${SRC_PATH}vos_file_access.c ${INC_PATH}vos_file_access.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_file_io.o:${SRC_PATH}vos_file_io.c ${INC_PATH}vos_file_io.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_guid.o:${SRC_PATH}vos_guid.c ${INC_PATH}vos_guid.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_hex_encode.o:${SRC_PATH}vos_hex_encode.c ${INC_PATH}vos_hex_encode.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_list.o:${SRC_PATH}vos_list.c ${INC_PATH}vos_list.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_log.o:${SRC_PATH}vos_log.c ${INC_PATH}vos_log.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_core_unix.o:${SRC_PATH}vos_core_unix.c ${INC_PATH}vos_os.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_rand.o:${SRC_PATH}vos_rand.c ${INC_PATH}vos_rand.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_sock.o:${SRC_PATH}vos_sock.c ${INC_PATH}vos_sock.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_sock_select.o:${SRC_PATH}vos_sock_select.c ${INC_PATH}vos_sock_select.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_string.o:${SRC_PATH}vos_string.c ${INC_PATH}vos_string.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+${OBJSPATH}vos_time.o:${SRC_PATH}vos_time.c ${INC_PATH}vos_time.h
+	$(CC) ${CFLAGS} ${INCLUDES} -c $< -o $@
+
+.PHONY:clean
+clean:
+	-rm ${BASECLASSOBJS}  ${LIB_TARGET}  -rf
+
+

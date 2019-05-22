@@ -1,0 +1,29 @@
+{
+    "name": "wa",
+    "version": "0.1.0",
+    "model": {},
+    "run": {
+        "image": "reg.qiniu.com/avaprd/aisdk-wa_20181207:20190128-v198-ATLAB-10169",
+        "batch_size": 4
+    },
+    "build": {
+        "files": {
+            "libwangan.so": "wa-20181207/tensorrt/wangan_v1.2_20190123/libwangan.so"
+        }
+    },
+    "test": {
+        "tsv": "",
+        "set": ""
+    },
+    "custom_files": {
+        "fine_weight.bin": "wa-20181207/tensorrt/wangan_v1.2_20190123/fine_weight.bin",
+        "fine_labels.csv": "wa-20181207/tensorrt/wangan_v1.2_20190123/classify_labels.csv",
+        "det_weight.bin": "wa-20181207/tensorrt/wangan_v1.2_20190123/det_weight.bin",
+        "det_labels.csv": "wa-20181207/tensorrt/wangan_v1.2_20190123/det_labels.csv"
+    },
+    "custom_values": {
+        "gpu_id": 0,
+        "frontend": "inproc://frontend.inproc",
+        "backend": "inproc://backend.inproc"
+    }
+}

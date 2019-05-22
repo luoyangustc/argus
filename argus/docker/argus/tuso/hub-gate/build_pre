@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/tuso/hub-gate
+cp $QBOXROOT/bin/hub-gate .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/tuso/hub-gate/tuso-hub-gate.conf .

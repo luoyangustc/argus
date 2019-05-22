@@ -1,0 +1,5 @@
+SmartBoxBZBase:http://100.100.62.101:18088/v1/internal/device/%s
+SmartBoxBZSetting:http://100.100.62.101:18088/v1/internal/device/%s/sub_devices
+DeviceId:QN0011561231771ea6e6f
+Entry_Server_Ip:100.100.62.101
+Entry_Server_Port:18088

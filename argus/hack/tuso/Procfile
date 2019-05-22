@@ -1,0 +1,6 @@
+argus-hack-watch: cd hack && exec ../../../../bin/argus-hack-watch -p 8556
+search-master: cd hack && ENV=LOCAL CONFIG_HOSTS=localhost:2379 PORT_HTTP=9201 exec ../../../../bin/search-master -f ../cmd/tuso/search-master/tuso-search-master.conf
+search-worker: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=9202 exec ../../../../bin/search-worker -f ../cmd/tuso/search-worker/tuso-search-worker.conf
+hub-process: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=9203 exec ../../../../bin/hub-process -f ../cmd/tuso/hub-process/tuso-hub-process.conf
+hub-gate: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=9204 exec ../../../../bin/hub-gate -f ../cmd/tuso/hub-gate/tuso-hub-gate.conf
+argus-job-gate: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=9205 exec ../../../../bin/argus-job-gate -f ../cmd/argus-job-gate/argus-job-gate.conf

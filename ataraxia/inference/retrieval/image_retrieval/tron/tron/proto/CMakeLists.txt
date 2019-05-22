@@ -1,0 +1,10 @@
+if (Protobuf_FOUND)
+  file(GLOB proto_files "*.proto")
+  GenProtobuf(proto_srcs proto_hdrs ${proto_files})
+  add_library(proto STATIC ${proto_srcs} ${proto_hdrs})
+  if (MSVC)
+    set_target_properties(proto PROPERTIES DEBUG_POSTFIX "d")
+  endif ()
+
+  set(Tron_PROTO_LIB proto PARENT_SCOPE)
+endif ()

@@ -1,0 +1,69 @@
+syntax = "proto2";
+
+package inference;
+
+
+message InitParams {
+    
+    optional string app = 1;
+
+}
+
+
+message CreateParams {
+
+    message Env {
+        optional string app = 1;
+        optional string workspace = 2;
+    }
+
+    optional string use_device = 1 [default="GPU"];
+    optional int32 batch_size = 2 [default=1];
+    optional Env env = 4;
+
+    message File {
+        optional string name = 1;
+        optional bytes body = 2;
+    }
+
+    repeated File model_files = 9;
+    optional string model_params = 10;
+    repeated File custom_files = 11;
+    optional string custom_params = 12;
+
+}
+
+
+message InferenceRequest {
+    
+    message RequestData {
+        optional string uri = 1;
+        optional string attribute = 2;
+        optional bytes body = 3;
+    }
+
+    optional RequestData data = 1;
+    repeated RequestData datas = 2;
+    optional string params = 3;
+
+}
+
+
+message InferenceRequests {
+    repeated InferenceRequest requests = 1; 
+}
+
+
+message InferenceResponse {
+
+    optional int32 code = 1;
+    optional string message = 2;
+    optional string result = 5;
+    optional bytes body = 6;
+
+}
+
+
+message InferenceResponses {
+    repeated InferenceResponse responses = 1;
+}

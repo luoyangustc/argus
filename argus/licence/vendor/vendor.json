@@ -1,0 +1,73 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "gS5wdfbttHTrMDjINxMV72ga1nY=",
+			"path": "github.com/mindprince/gonvml",
+			"revision": "b364b296c7320f5d3dc084aa536a3dba33b68f90",
+			"revisionTime": "2018-05-14T03:13:26Z"
+		},
+		{
+			"checksumSHA1": "maEi2ISe0I37S0DfgowFcTn/MUo=",
+			"path": "github.com/pbnjay/memory",
+			"revision": "16f8386fc07fd0642daed7965fd95e4d15bbf73a",
+			"revisionTime": "2018-04-30T19:04:42Z"
+		},
+		{
+			"checksumSHA1": "cyoqI0gryzjxGTkaAfyUqMiuUR0=",
+			"path": "github.com/shirou/gopsutil/internal/common",
+			"revision": "d9d9688f3d20a6b7942c5222607c29b32b69d15e",
+			"revisionTime": "2018-07-24T02:04:15Z"
+		},
+		{
+			"checksumSHA1": "TT1rac6kpQp2vz24m5yDGUNQ/QQ=",
+			"path": "golang.org/x/crypto/cast5",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "cgiUEv1KjkrbXQS9X8yLJUclFuc=",
+			"path": "golang.org/x/crypto/openpgp",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "olOKkhrdkYQHZ0lf1orrFQPQrv4=",
+			"path": "golang.org/x/crypto/openpgp/armor",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "KsxFyUbL2BqNvs3h80/XtnpFlTo=",
+			"path": "golang.org/x/crypto/openpgp/clearsign",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "eo/KtdjieJQXH7Qy+faXFcF70ME=",
+			"path": "golang.org/x/crypto/openpgp/elgamal",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "rlxVSaGgqdAgwblsErxTxIfuGfg=",
+			"path": "golang.org/x/crypto/openpgp/errors",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "djKW9IdTOrvFMK5VtIYjcsySer8=",
+			"path": "golang.org/x/crypto/openpgp/packet",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		},
+		{
+			"checksumSHA1": "s2qT4UwvzBSkzXuiuMkowif1Olw=",
+			"path": "golang.org/x/crypto/openpgp/s2k",
+			"revision": "c126467f60eb25f8f27e5a981f32a87e3965053f",
+			"revisionTime": "2018-07-23T15:26:11Z"
+		}
+	],
+	"rootPath": "github.com/qbox/argus/licence"
+}

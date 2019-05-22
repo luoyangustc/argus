@@ -1,0 +1,47 @@
+
+NUM_CLASSES: 3
+
+TRAIN:
+  LOG_PATH: /workspace/alpha/blademaster/log-train/bm_v40.4_0203.log
+  OUTPUT_MODEL_PREFIX: /workspace/alpha/blademaster/model/v40.4_se_X101_64x4d/bm-v40.4
+  TRAIN_ITER:
+    path_imgrec: /workspace/alpha/blademaster/cache/v40.1_se_X101_64x4d/recordio/train-256X.rec
+    shuffle: true
+    random_resized_crop: false
+    min_random_area: 0.75
+    max_random_area: 1
+    rand_mirror: true
+    max_rotate_angle: 20
+    max_aspect_ratio: 1.333333
+    min_aspect_ratio: 0.75
+    brightness: 0.4
+    contrast: 0.4
+    saturation: 0.4
+    hue: 0.0
+    pca_noise: 0.1
+  DEV_ITER:
+    path_imgrec: /workspace/alpha/blademaster/cache/v40.1_se_X101_64x4d/recordio/dev-224X.rec
+
+  LOG_INTERVAL: 80
+  MAX_EPOCHS: 70
+  BATCH_SIZE: 32
+  NUM_SAMPLES: 2230251
+
+  SOFTMAX_SMOOTH_ALPHA: 0.01
+  BASE_LR: 0.02
+  WEIGHT_DECAY: 0.0001
+  MOMENTUM: 0.9
+  WARMUP_EPOCHS: 3
+
+  FINETUNE:
+    PRETRAINED_MODEL_PREFIX: /workspace/alpha/pretrained_models/mxnet/se-resnext-101-64x4d-nogammafix
+    PRETRAINED_MODEL_EPOCH: 0
+    FINETUNE_LAYER: flatten0
+
+TEST:
+  MODEL_PREFIX: xx
+  MODEL_EPOCH: xx
+  GPU_ID: 0
+  BATCH_SIZE: 16
+  IMAGE_LIST_FILE: xx
+  OUTPUT_JSON_PATH: xx

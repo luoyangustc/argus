@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+[
+    {
+    "version": "v1",
+    "expires": "3019-07-08T10:11:12+08:00",
+    "os": "darwin",
+    "cpu_num": 8
+    }
+]
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJbWUlbAAoJEAOS4Qea6aexb9EH/R0TMAIePBEvYjRrVTPHL8x5
+a6mkisBrZjPC2AxuEi0F8I3/vHZ+LQC+hhyvtjb7Cm9Mck6Ml9yg1xqAdDO/3S1F
+D1Pty3dRYYktZVJlsYAxxzy/1aOOaKEAwpK6znZuE44OMMa++0GtfN7+VCDfKISI
+ZyevUsH8C9iANsdB5enim3FkXxwGYI0O6NT9mt4qww6hVZezdapxouObL3BoI+mF
+kOWajpLZ2cC5nPNzk6aq4Vi1QkWm6ZUAAXDqU18zO5liAMtVXqerYk7h0wn4yHXQ
+xkEqZZ/HKsGnaQ0T22SiOhiq1UAE2c/CTqu/PcFNiSRKJuhWnWdvLJG8WQwRgJY=
+=USmc
+-----END PGP SIGNATURE-----

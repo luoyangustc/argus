@@ -1,0 +1,14 @@
+argus-hack-watch: cd hack && exec ../../../../bin/argus-hack-watch -p 8555
+
+serving-gate: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=9101 exec ../../../../bin/serving-gate -f ../cmd/serving-gate/serving-gate.conf
+argus-util: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=6020 SERVING_GATE_HOST=http://127.0.0.1:9101 exec ../../../../bin/argus-util -f ../cmd/argus-util/argus-util.conf
+argus-gate: cd hack && CONFIG_HOSTS=localhost:2379 PORT_HTTP=6021 exec ../../../../bin/argus-gate -f ../cmd/argus-gate/argus-gate.conf
+hello-eval: mkdir -p /tmp/eval && cd hack && CONFIG_HOSTS=localhost:2379 BOOTS_APP=hello-eval BOOTS_VERSION=1 PORT_HTTP=9100 RUN_MODE=local USE_DEVICE=CPU exec ../../../../bin/serving-eval -f ../cmd/serving-eval/serving-eval.conf
+
+sts: mkdir -p /tmp/20170510 && cd hack && DEBUG=true exec ../../../../bin/sts -f ../cmd/sts/sts.conf
+
+argus-vframe: cd hack && PORT_HTTP=6022 CONFIG_HOSTS=localhost:2379 DEBUG=TRUE exec ../../../../bin/argus-vframe -f ../cmd/argus-vframe/argus-vframe.conf
+argus-video: cd hack && PORT_HTTP=6023 CONFIG_HOSTS=localhost:2379 SERVING_GATE_HOST=http://127.0.0.1:9101 exec ../../../../bin/argus-video -f ../cmd/argus-video/argus-video.conf
+
+# argus-video-private: cd hack && PORT_HTTP=6024 DEBUG=TRUE exec ../../../../bin/argus-video-private -f ../cmd/argus-video-private/argus-video-private.conf
+# argus-live-private: cd hack && PORT_HTTP=6025 DEBUG=TRUE exec ../../../../bin/argus-live-private -f ../cmd/argus-live-private/argus-live-private/argus-live-private.conf

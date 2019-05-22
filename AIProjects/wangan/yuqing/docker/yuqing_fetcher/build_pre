@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ex
+GOOS=linux go install qiniu.com/argus/AIProjects/wangan/yuqing/app/yuqing_fetcher
+cp $GOPATH/bin/linux_amd64/yuqing_fetcher .
+cp $GOPATH/src/qiniu.com/argus/AIProjects/wangan/yuqing/app/yuqing_fetcher/yuqing_fetcher.conf .

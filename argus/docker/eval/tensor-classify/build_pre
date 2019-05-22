@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -ex
+
+cd $QBOXROOT/ava/docker/tensorrt
+docker build -t tensorrt -f tensorrt.Dockerfile .
+docker run --name tensorrt_build --env QBOXROOT=/workspace -v $QBOXROOT/ava:/workspace/ava -v $QBOXROOT/ava/docker/tensorrt/build.sh:/workspace/build.sh  --rm tensorrt /bin/bash /workspace/build.sh
+cd -
+
+cp $QBOXROOT/ava/docker/scripts/tensorrt/libtensorrt.so . 
+cp $QBOXROOT/bin/serving-eval .
+cp $QBOXROOT/src/qiniu.com/argus/cmd/serving-eval/serving-eval.conf .

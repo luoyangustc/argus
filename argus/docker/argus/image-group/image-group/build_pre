@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+go install qiniu.com/argus/cmd/image_group/image_group
+cp $QBOXROOT/bin/image_group .

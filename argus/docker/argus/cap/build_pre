@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/cap
+cp $QBOXROOT/bin/cap argus-cap

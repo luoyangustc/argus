@@ -1,0 +1,25 @@
+{
+    "nGpuId":           0,
+    "faceEnable":       1,
+    "bodyEnable":       1,
+    "motorEnable":      1,
+    "nonMotorEnable":   1,
+
+    "debug_msg": false,
+
+    "person_vehicle_det_local_model": "/data/models/yolov3-tiny_pvn.tronmodel",
+    "batch_size": 1,
+
+    "class_index_person": 1,
+    "class_index_motor": 2,
+    "class_index_non_motor": 3,
+
+    "person_attribute_local_model": "/data/models/resnet18_personattr_merged.tronmodel",
+
+    "vehicle_attribute_local_model": "/data/models/vehicle_attribute_168_iter_50000_merged.tronmodel",
+
+    "plate_det_local_model":"/data/models/east_plate_320X320_P4_v2.tronmodel",
+    "plate_recog_local_model":"/data/models/crnn_13_4_merged.tronmodel",
+
+    "stream_push_address": "a"
+}

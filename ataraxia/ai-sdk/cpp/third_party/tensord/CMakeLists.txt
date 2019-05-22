@@ -1,0 +1,77 @@
+cmake_minimum_required(VERSION 3.6.3 FATAL_ERROR)
+
+project(tensord VERSION 0.2.0)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if (NOT CMAKE_BUILD_TYPE)
+  message(STATUS "Build type not set - defaulting to Release")
+  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build from: Release Debug." FORCE)
+endif ()
+
+include(GNUInstallDirs)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
+
+set(TENSORD_SOURCE_DIR ${PROJECT_SOURCE_DIR})
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
+include(${PROJECT_SOURCE_DIR}/cmake/utils.cmake)
+
+find_package(Protobuf 3.6.1 REQUIRED)
+add_definitions(-DUSE_Protobuf)
+include(${PROJECT_SOURCE_DIR}/cmake/Protobuf.cmake)
+
+include_directories("include")
+include_directories("third_party")
+
+# 开发模式，工程只编译，不link依赖库
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  option(TENSORD_DEV "" ON)
+else ()
+  option(TENSORD_DEV "" OFF)
+endif ()
+
+option(USE_CUDA "Use CUDA" ON)
+option(USE_CUDNN "Use CUDNN for acceleration" ON)
+if (${USE_CUDA})
+  find_package(CUDA QUIET)
+  if (CUDA_FOUND)
+    # include_directories(SYSTEM ${CUDA_TOOLKIT_INCLUDE})
+    # list(APPEND Tron_LINKER_LIBS ${CUDA_CUDART_LIBRARY} ${CUDA_cublas_LIBRARY})
+    message(STATUS "Found CUDA: ${CUDA_TOOLKIT_ROOT_DIR} (found version ${CUDA_VERSION})")
+    add_definitions(-DUSE_CUDA)
+    if (${USE_CUDNN})
+      find_package(CUDNN QUIET)
+      if (CUDNN_FOUND)
+        # include_directories(SYSTEM ${CUDNN_INCLUDE_DIRS})
+        # list(APPEND Tron_LINKER_LIBS ${CUDNN_LIBRARIES})
+        message(STATUS "Found CUDNN: ${CUDNN_INCLUDE_DIRS}, ${CUDNN_LIBRARIES} (found version ${CUDNN_VERSION})")
+        add_definitions(-DUSE_CUDNN)
+      else ()
+        message(WARNING "Could not find CUDNN, disable it")
+        set(USE_CUDNN OFF)
+      endif ()
+    endif ()
+  else ()
+    message(STATUS "Could not find CUDA, using CPU")
+    set(USE_CUDA OFF)
+  endif ()
+endif ()
+
+option(PLATFORM_ALL "All Platform" OFF)
+option(PLATFORM_CAFFE "Platform Caffe" OFF)
+option(PLATFORM_MXNET "Platform Mxnet" OFF)
+option(TENSORD_SERVER "Tensord as server" OFF)
+
+add_subdirectory(src)
+
+option(TENSORD_TEST "" OFF)
+if (${TENSORD_TEST})
+  enable_testing()
+  add_subdirectory(test)
+endif ()

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+message ForwardMsg{
+    string uuid = 1;
+    string reqid = 6;
+    map<string, bytes> meta = 2;
+    bytes network_input_buf = 3;
+    bytes network_output_buf = 4;
+    string desc = 5;
+}
+
+message ForwardMsgs{
+    repeated ForwardMsg msgs = 1;
+}
+
+service Forward {
+    rpc Forward (ForwardMsgs) returns (ForwardMsgs) {}
+}
+
+
+message InferenceRequest {
+    message RequestData {
+        string uri = 1;
+        string attribute = 2;
+        bytes body = 3;
+    }
+    RequestData data = 1;
+    repeated RequestData datas = 2;
+    string params = 3;
+    string reqid = 4;
+}
+
+message InferenceResponse {
+    int32 code = 1;
+    string message = 2;
+    string result = 5;
+    bytes body = 6;
+}
+
+service Inference {
+    rpc Inference (InferenceRequest) returns (InferenceResponse) {}
+    rpc Ping (PingMsg) returns (PingMsg) {}
+}
+
+message MonitorMetric {
+    string kind = 1;
+    string pid = 2;
+    string code = 3;
+    double value = 4;
+}
+
+message NumpyNdarray {
+    string dtype = 1;
+    repeated int32 shape = 2;
+    bytes data = 3;
+}
+
+message PingMsg{
+    string msg = 1;
+}

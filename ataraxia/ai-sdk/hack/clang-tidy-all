@@ -1,0 +1,3 @@
+#!/bin/bash
+export PATH=/usr/local/opt/llvm/bin:$PATH
+./hack/run-clang-tidy.py -header-filter='.*cpp/src/.*' --files_exclude "pb.cc|common/archiver.cpp|common/md5.cpp|common/type.hpp" -p cpp/build -j 4 cpp/src

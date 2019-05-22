@@ -1,0 +1,135 @@
+modelRoot: "/workspace/serving/models"
+model: {
+  name: "ff"
+  version: 0
+  platform: "mxnet"
+  file: {
+    name: "model-symbol.json"
+  }
+  file: {
+    name: "model.params"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 112
+    shape: 112
+  }
+  output: {
+    name: "pre_fc1"
+    shape: 256
+  }
+}
+model: {
+  name: "r"
+  version: 0
+  platform: "caffe"
+  file: {
+    name: "net.prototxt"
+  }
+  file: {
+    name: "net.caffemodel"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 24
+    shape: 24
+  }
+  output: {
+    name: "conv5-2"
+    shape: 4
+  }
+}
+model: {
+  name: "o"
+  version: 0
+  platform: "caffe"
+  file: {
+    name: "net.prototxt"
+  }
+  file: {
+    name: "net.caffemodel"
+  }
+  input: {
+    name: "data"
+    shape: 3
+    shape: 48
+    shape: 48
+  }
+  output: {
+    name: "conv6-2"
+    shape: 4
+  }
+  output: {
+    name: "conv6-3"
+    shape: 10
+  }
+}
+model: {
+  name: "l"
+  version: 0
+  platform: "caffe"
+  file: {
+    name: "net.prototxt"
+  }
+  file: {
+    name: "net.caffemodel"
+  }
+  input: {
+    name: "data"
+    shape: 15
+    shape: 24
+    shape: 24
+  }
+  output: {
+    name: "fc5_1"
+    shape: 2
+  }
+  output: {
+    name: "fc5_2"
+    shape: 2
+  }
+  output: {
+    name: "fc5_3"
+    shape: 2
+  }
+  output: {
+    name: "fc5_4"
+    shape: 2
+  }
+  output: {
+    name: "fc5_5"
+    shape: 2
+  }
+}
+instance: {
+  model: "ff"
+  version: 0
+  batchSize: 4
+  count: {
+    count: 1
+    kind: GPU
+    gpu: 0
+  }
+}
+instance: {
+  model: "o"
+  version: 0
+  batchSize: 4
+  count: {
+    count: 1
+    kind: GPU
+    gpu: 0
+  }
+}
+instance: {
+  model: "l"
+  version: 0
+  batchSize: 4
+  count: {
+    count: 1
+    kind: GPU
+    gpu: 0
+  }
+}

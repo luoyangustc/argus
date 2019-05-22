@@ -1,0 +1,9 @@
+feats_bin/face_chip_1_1_feat_v2.dat
+feats_bin/face_chip_1_2_feat_v2.dat
+feats_bin/face_chip_1_3_feat_v2.dat
+feats_bin/face_chip_2_1_feat_v2.dat
+feats_bin/face_chip_2_4_feat_v2.dat
+feats_bin/face_chip_2_6_feat_v2.dat
+feats_bin/face_chip_3_1_feat_v2.dat
+feats_bin/face_chip_3_2_feat_v2.dat
+feats_bin/face_chip_3_3_feat_v2.dat

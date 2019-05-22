@@ -1,0 +1,6 @@
+### Example user template
+model_caffe
+model_mxnet
+model_tron
+
+proto/caffe.proto

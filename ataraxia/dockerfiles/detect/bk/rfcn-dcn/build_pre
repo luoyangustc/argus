@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -ex
+
+#GOOS=linux go install qiniu.com/ava/app/serving-eval
+#cp $QBOXROOT/ava/platform/bin/serving-eval .
+#cp $QBOXROOT/ava/platform/src/qiniu.com/ava/app/serving-eval/serving-eval.conf .
+
+rm -rf evals
+#mkdir evals
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/evals .
+cp $QBOXROOT/ataraxia/inference/image/detection/rfcn-dcn/eval.py evals/eval.py
+cp $QBOXROOT/ataraxia/inference/image/detection/rfcn-dcn/net.py evals/net.py
+#cp -r $QBOXROOT/ava/docker/scripts/evals/utils evals/
+#cp -r $QBOXROOT/ava/docker/scripts/evals/mxnet_base evals/
+#cp $QBOXROOT/ava/docker/scripts/evals/__init__.py evals/
+#cp $QBOXROOT/ evals/eval.py
+rm -rf build
+mkdir build
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/inference/py build/

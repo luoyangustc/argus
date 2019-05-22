@@ -1,0 +1,3 @@
+#!/bin/bash
+CLANG_FORMAT_COMMAND=`find ~/.vscode/extensions/ms-vscode.cpptools* | grep clang-format.darwin`
+find . | grep -E '\.(cpp|cc|c|h|cc|hpp)$' | grep -v -E "(pb\.(cc|h))|third_party|golang|build" | xargs -I {} -n 1 $CLANG_FORMAT_COMMAND -i {};

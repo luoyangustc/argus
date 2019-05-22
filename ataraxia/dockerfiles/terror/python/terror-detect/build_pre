@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf evals
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/evals .
+cp $QBOXROOT/ataraxia/inference/terror/python/terror-detect/terror-detect-rfcn-dcn.py evals/eval.py
+cp $QBOXROOT/ataraxia/inference/terror/python/terror-detect/net.py evals/net.py
+rm -rf build
+mkdir build
+cp -r $QBOXROOT/ataraxia/ava/atserving/scripts/inference/py build/

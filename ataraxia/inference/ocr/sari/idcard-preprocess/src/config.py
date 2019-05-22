@@ -1,0 +1,6 @@
+ALIGNER_TEMPLATE_IDCARD_IMG_PATH = "/workspace/serving/python/evals/src/IDCardfront/template/1.jpg"
+ALIGNER_TEMPLATE_IDCARD_LABEL_PATH = "/workspace/serving/python/evals/src/IDCardfront/template/1.txt"
+ALIGNER_TEMPLATE_IDCARDBACK_IMG_PATH = "/workspace/serving/python/evals/src/IDCardback/template/1.jpg"
+ALIGNER_TEMPLATE_IDCARDBACK_LABEL_PATH = "/workspace/serving/python/evals/src/IDCardback/template/1.txt"
+ALIGNER_TEMPLATE_IDCARDCLASS_IMG_PATH = "/workspace/serving/python/evals/src/template_class/front.jpg"
+ALIGNER_TEMPLATE_IDCARDCLASSBACK_IMG_PATH = "/workspace/serving/python/evals/src/template_class/back.jpg"

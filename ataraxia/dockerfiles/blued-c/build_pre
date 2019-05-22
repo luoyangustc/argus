@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf evals
+cp -r $ATARAXIAROOT/ava/atserving/scripts/evals .
+cp $ATARAXIAROOT/inference/blued-c/python/mxnet-classify.py evals/eval.py
+cp -r $ATARAXIAROOT/inference/mxnet_base evals/mxnet_base
+
+rm -rf build
+mkdir build
+cp -r $ATARAXIAROOT/ava/atserving/scripts/inference/py build/py_eval

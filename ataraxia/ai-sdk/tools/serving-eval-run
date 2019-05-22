@@ -1,0 +1,188 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""serving-eval-run.
+
+Usage:
+  serving-eval-run PATH INFO [--gpu list]
+  serving-eval-run (-h | --help)
+  serving-eval-run --version
+
+Options:
+  -h --help          Show this screen.
+  --version          Show version.
+  PATH               Workspace
+  INFO               Info.json
+  --gpu list         Gpu ids
+
+"""
+import json
+import os
+import re
+import subprocess
+import sys
+from docopt import docopt
+from jinja2 import Template
+
+sys.path.append(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), '../python'))
+
+from aisdk.common.download_model import download_model
+
+
+def read_lines(name):
+    '''read lines from file'''
+    with open(name) as file_:
+        return file_.readlines()
+
+
+def write_lines(name, lines):
+    '''write lines to file'''
+    with open(name, 'w') as file_:
+        file_.writelines(lines)
+
+
+class RunCmdException(Exception):
+    '''RunCmdException'''
+    pass
+
+
+CONFIG = {
+    "app": {
+        "name": "",
+    },
+    "audit_log": {
+        "logdir": "/workspace/serving/auditlog",
+        "logchunkbits": 29
+    },
+    "debug_level": 0,
+    "workspace": "/tmp/eval/",
+    "run_mode": "standalone",
+    "use_device": "GPU",
+    "release": {
+        "batch_size": 1,
+        "custom_files": {},
+        "custom_values": {},
+    }
+}
+
+CMD = '''docker run \
+ -e 'PORT_HTTP={{ port }}' \
+ -v '{{ ws }}/serving-eval.conf:/workspace/serving/serving-eval.conf' \
+ -v '{{ ws }}/files/:/workspace/serving/files/' \
+ -v 'nvidia_driver_396.44:/usr/local/nvidia:ro' \
+ --rm \
+ --network host \
+ --device /dev/nvidiactl --device /dev/nvidia-uvm --device /dev/nvidia{{ gpu }} \
+{% if name %} --name {{ name }} \
+{% endif %} {{ image }}
+'''
+
+
+def mkdirs(*args):
+    d = os.path.join(*args)
+    if not os.path.isdir(d):
+        os.makedirs(d)
+
+
+def mkdirs_parent(*args):
+    d = os.path.dirname(os.path.join(*args))
+    mkdirs(d)
+
+
+def main(arg):
+    '''main'''
+#   serving-eval-run INFO IMAGE [--gpu list]
+
+    gpu_id = '0' if not arg['--gpu'] else arg['--gpu'][0]
+    ws = arg['PATH']
+
+    os.chdir("../")
+    cwd = os.getcwd()
+
+    info = {}
+    infoname = arg['INFO'] \
+        if arg['INFO'].startswith('/') or arg['INFO'].startswith('.') \
+        else os.path.join(cwd, arg['INFO'])
+    with open(infoname, 'r') as file_:
+        info = json.loads(file_.read())
+
+    info_type = info.get("info_type", None)
+    info_type = None
+
+    if info_type == "tensord":
+        with open(
+                os.path.join(os.path.dirname(infoname),
+                             info['model']['prototxt']),
+                'r') as f:
+            body = f.read()
+        with open(os.path.join(ws, 'files', "models.prototxt"), 'w+') as f:
+            f.write(body)
+        mkdirs(ws, 'files', 'models')
+
+    if info['model'].get('tar_file', None):
+        filename = os.path.join(ws, 'files',
+                                info['model']['tar_file'].split('/')[-1])
+        download_model(filename,
+                       key=info['model']['tar_file'],
+                       model_dir=os.path.join(ws, 'files'),
+                       )
+        if info_type is None:
+            CONFIG['release']['tar_file'] = 'file:///workspace/serving/files/' + \
+                info['model']['tar_file'].split('/')[-1]
+        elif info_type == "tensord":
+            import tarfile
+            with tarfile.open(filename, 'r:gz' if filename.endswith(".gz") else 'r:') as t:
+                t.extractall(path=os.path.join(ws, 'files'))
+            for name, alias in info['model'].get("alias", {}).items():
+                mkdirs_parent(ws, 'files', 'models', name)
+                os.rename(os.path.join(ws, 'files', alias),
+                          os.path.join(ws, 'files', 'models', name))
+
+    if info['model'].get('files', {}) and info_type == 'tensord':
+        for key, value in info['model'].get('files', {}).items():
+            mkdirs_parent(ws, 'files', 'models', key)
+            download_model(
+                os.path.join(ws, 'files', 'models', key),
+                key=value,
+                model_dir=os.path.join(ws, 'files'),
+            )
+
+    for key, value in info.get('custom_files', {}).items():
+        mkdirs_parent(ws, 'files', key)
+        download_model(
+            os.path.join(ws, 'files', key),
+            key=value,
+            model_dir=os.path.join(ws, 'files'),
+        )
+        CONFIG['release']['custom_files'][key] = 'file:///workspace/serving/files/' + key
+
+    # TODO info['custom_files'] # pylint: disable=fixme
+
+    CONFIG['app']['name'] = info['name']
+    CONFIG['release']['batch_size'] = CONFIG['release']['batch_size'] \
+        if not info['run']['batch_size'] else info['run']['batch_size']
+    CONFIG['release']['custom_values'] = info['custom_values']
+
+    with open(os.path.join(ws, 'serving-eval.conf'), 'w') as file_:
+        file_.write(json.dumps(CONFIG, indent=4))
+
+    cmd = Template(CMD).render(
+        port='23700',
+        ws=ws, gpu=gpu_id,
+        image=info['run']['image'],
+        name=info['name'] if info['name'] else None,
+    )
+
+    print cmd
+    # return
+
+    process = subprocess.Popen(cmd, shell=True, executable='/bin/bash')
+    process.wait()
+    if process.returncode != 0:
+        raise RunCmdException()
+
+
+if __name__ == '__main__':
+
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+    main(docopt(__doc__, version='0.5'))

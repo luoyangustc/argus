@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -ex
+GOOS=linux go install qiniu.com/argus/cmd/argus-fop/bucket-inspect
+cp $QBOXROOT/bin/bucket-inspect bucket-inspect

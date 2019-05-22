@@ -1,0 +1,13 @@
+{
+  "app_name": "terror_detect",
+  "build": {
+    "model_tar": "res/model/ava-terror-detect_terror-detect-V1.1.5-1107.tar"
+  },
+  "model_files": {
+    "weight.params": "res/model/ava-terror-detect_terror-detect-V1.1.5-1107/weight.params",
+    "deploy.symbol.json": "res/model/ava-terror-detect_terror-detect-V1.1.5-1107/deploy.symbol.json",
+    "labels.csv": "res/model/ava-terror-detect_terror-detect-V1.1.5-1107/labels.csv"
+  },
+  "batch_size": 1,
+  "use_device": "GPU"
+}

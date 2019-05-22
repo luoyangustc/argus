@@ -1,0 +1,28 @@
+# 直播性能测试依赖组件
+# docker run -dt -p 9999:80 kennethreitz/httpbin
+# qdoractl pull hub2.qiniu.com/1381102897/aiprojects-rtsp-server:201805101048
+# docker run -dt -p 58080:80 --name rtsp_server hub2.qiniu.com/1381102897/aiprojects-rtsp-server:201805101048
+product_name: face_search
+benchmarks:
+  - name : "face_search_live 1w底库"
+    tsv:
+       - 480p.tsv
+       - 720p.tsv
+       - 1080p.tsv
+    env:
+      port: "11000"
+      group: face_1w
+    interval:
+      - 5
+      - 10
+      - 25
+      - 50
+      - 125
+init:
+  - name: face-search
+    precision: 4
+    dimension: 512
+    groups:
+      - name: face_1w
+        port: 6125
+        size: 10000

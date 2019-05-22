@@ -1,0 +1,1 @@
+## 此文档迁移到 https://github.com/qbox/ataraxia/blob/dev/doc/AtServing.api.md

@@ -1,0 +1,30 @@
+
+syntax = "proto3";
+
+package tensord.grpc;
+
+message Data {
+    string name = 1;
+    bytes body = 2;
+}
+
+message Requests {
+    string model = 1;
+    int32 version = 2;
+
+    message Request {
+        repeated Data data = 1;
+    }
+    repeated Request request = 3;
+}
+
+message Responses {
+    message Response {
+        repeated Data data = 1;
+    }
+    repeated Response response = 3;
+}
+
+service Tensord {
+    rpc Predict(Requests) returns (Responses) {}
+}

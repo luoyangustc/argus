@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -ex
+
+rm -rf evals
+cp -r $ATARAXIAROOT/ava/atserving/scripts/evals .
+cp $ATARAXIAROOT/inference/static-facex-search/python/facex-search.py evals/eval.py
+
+rm -rf build
+mkdir build
+cp -r $ATARAXIAROOT/ava/atserving/scripts/inference/py build/py_eval

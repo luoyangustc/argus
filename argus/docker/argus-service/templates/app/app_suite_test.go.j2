@@ -1,0 +1,21 @@
+package censor
+
+import (
+	"fmt"
+	"testing"
+
+	"github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/config"
+	"github.com/onsi/ginkgo/reporters"
+	"github.com/onsi/gomega"
+{%- for srv_pkg in app.services %}
+	_ "{{ srv_pkg }}/test"
+{%- endfor %}
+)
+
+var ReporterPath = "./reporters/"
+
+func TestAll(t *testing.T) {
+	gomega.RegisterFailHandler(ginkgo.Fail)
+	ginkgo.RunSpecsWithDefaultAndCustomReporters(t, "Censor Suite", []ginkgo.Reporter{reporters.NewJUnitReporter(ReporterPath + fmt.Sprintf("censor_%d.xml", config.GinkgoConfig.ParallelNode))})
+}

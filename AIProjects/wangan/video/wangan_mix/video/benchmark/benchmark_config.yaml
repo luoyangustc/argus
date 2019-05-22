@@ -1,0 +1,55 @@
+# 视频都是定长： 60s
+product_name: wangan
+benchmarks:
+  - name : "wangan_mix, interval=0.5"
+    tsv:
+       - 480p.tsv
+       - 720p.tsv
+       - 1080p.tsv
+    js: k6.js
+    env:
+      port: "11000"
+    vus:
+      - 1
+      - 5
+      - 10
+    interval: 0.5
+  - name : "wangan_mix, interval=1"
+    tsv:
+       - 480p.tsv
+       - 720p.tsv
+       - 1080p.tsv
+    js: k6.js
+    env:
+      port: "11000"
+    vus:
+      - 1
+      - 5
+      - 10
+    interval: 1.0
+  - name : "wangan_mix, interval=2"
+    tsv:
+       - 480p.tsv
+       - 720p.tsv
+       - 1080p.tsv
+    js: k6.js
+    env:
+      port: "11000"
+    vus:
+      - 1
+      - 5
+      - 10
+    interval: 2.0
+  - name : "wangan_mix, interval=5"
+    tsv:
+       - 480p.tsv
+       - 720p.tsv
+       - 1080p.tsv
+    js: k6.js
+    env:
+      port: "11000"
+    vus:
+      - 1
+      - 10
+      - 20
+    interval: 5.0

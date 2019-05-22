@@ -1,0 +1,8 @@
+issues:
+  exclude:
+    - "CloseSession"
+    - ".Write"
+    - ".WriteString"
+    - ".Flush"
+  new: true
+  new-from-rev: c7eb2232ccbeafe0aba855620ca3452a93e8ae1b

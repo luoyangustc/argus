@@ -1,0 +1,17 @@
+product_name: face
+benchmarks:
+  - name: face-sim
+    tsv:
+      - all.tsv
+      - many-face-no-sim.tsv
+      - many-face-sim.tsv
+      - no-face.tsv
+      - single-face-no-sim.tsv
+      - single-face-sim.tsv
+    js: k6.js
+    env:
+      SCENES: face-sim
+    vus:
+      - 1
+      - 10
+      - 20
